@@ -1,0 +1,242 @@
+.hero {
+    background: url('https://via.placeholder.com/1500x500') no-repeat center center;
+    background-size: cover;
+    height: 500px;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+    .hero h1 {
+        font-size: 4rem;
+        font-weight: bold;
+    }
+
+    .hero p {
+        font-size: 1.5rem;
+    }
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.footer {
+    background: #f8f9fa;
+    padding: 20px 0;
+}
+/* Estilo básico do modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Conteúdo do modal */
+.modal-content {
+    background-color: #fefefe;
+    margin: 20% auto;
+    padding: 2%;
+    border: 1px solid #888;
+    width: 20%;
+}
+
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+/* Modo noturno */
+body.dark-mode .modal-content {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+
+
+:root {
+    --bg-color: #fff;
+    --text-color: #000;
+    --input-bg-color: #fff;
+    --input-text-color: #000;
+    --input-border-color: #ccc;
+}
+
+.content{
+   flex: 1 0 auto;
+}
+footer {
+    flex-shrink: 0;
+}
+
+html {
+    font-size: 16px;
+    min-height: 100%;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --input-bg-color: #333;
+    --input-text-color: #fff;
+    --input-border-color: #555;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+.input-field {
+    margin-bottom: 20px;
+}
+
+    .input-field.hidden {
+        display: none;
+    }
+
+#dynamic-form button {
+    display: block;
+    margin-top: 20px;
+}
+
+input, textarea, select, button {
+    background-color: var(--input-bg-color);
+    color: var(--input-text-color);
+    border: 1px solid var(--input-border-color);
+}
+
+    input::placeholder, textarea::placeholder {
+        color: var(--input-text-color);
+    }
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+
+
+.form-signin {
+    max-width: 330px;
+    padding: 1rem;
+}
+
+    .form-signin .form-floating:focus-within {
+        z-index: 2;
+    }
+
+    .form-signin input[type="email"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.b-example-divider {
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.b-example-vr {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 100vh;
+}
+
+.bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+}
+
+.nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+}
+
+    .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+.btn-bd-primary {
+    --bd-violet-bg: #712cf9;
+    --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: var(--bd-violet-bg);
+    --bs-btn-border-color: var(--bd-violet-bg);
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: #6528e0;
+    --bs-btn-hover-border-color: #6528e0;
+    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #5a23c8;
+    --bs-btn-active-border-color: #5a23c8;
+}
+
+.bd-mode-toggle {
+    z-index: 1500;
+}
+
+    .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+    }

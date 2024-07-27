@@ -1,0 +1,89 @@
+[Página Inicial]
+   |
+   +--> [Navegar por Categorias]
+   |         |
+   |         +--> [Selecionar Categoria]
+   |               |
+   |               +--> [Filtrar Produtos]
+   |                      |
+   |                      +--> [Exibir Lista de Produtos] <---> [Base de Dados: Tabela de Produtos]
+   |
+   +--> [Buscar Produto]
+         |
+         +--> [Inserir Termo de Pesquisa]
+               |
+               +--> [Exibir Resultados da Pesquisa] <---> [Base de Dados: Tabela de Produtos]
+
+[Página do Produto]
+   |
+   +--> [Adicionar ao Carrinho]
+         |
+         +--> [Carrinho de Compras]
+               |
+               +--> [Exibir Produtos no Carrinho]
+               |
+               +--> [Proceder para Checkout]
+                     |
+                     +--> [Verificar Login]
+                           |
+                           +--> [Não Logado] --> [Redirecionar para Página de Login]
+                           |       |
+                           |       +--> [Fazer Login] <---> [Base de Dados: Tabela de Usuários]
+                           |
+                           +--> [Já Logado] --> [Checkout]
+                                 |
+                                 +--> [Informações de Envio]
+                                 |       |
+                                 |       +--> [Base de Dados: Tabela de Endereços de Envio]
+                                 |
+                                 +--> [Informações de Pagamento]
+                                 |
+                                 +--> [Revisar Pedido]
+                                 |
+                                 +--> [Confirmar Compra] <---> [Base de Dados: Tabela de Pedidos]
+                                       |
+                                       +--> [Base de Dados: Tabela de Itens do Pedido]
+                                       +--> [Base de Dados: Atualização de Estoque]
+
+[Acompanhamento e Suporte]
+   |
+   +--> [Rastrear Pedido] <---> [Base de Dados: Tabela de Pedidos]
+   +--> [Política de Devolução]
+   +--> [Contatar Suporte ao Cliente]
+
+[Funcionalidades Adicionais]
+   |
+   +--> [Cadastro e Recuperação de Senha]
+   |       |
+   |       +--> [Cadastro de Novo Usuário] <---> [Base de Dados: Tabela de Usuários]
+   |       +--> [Recuperação de Senha]
+   |
+   +--> [Personalização e Recomendações]
+   |       |
+   |       +--> [Recomendações de Produtos] <---> [Base de Dados: Tabela de Produtos]
+   |       +--> [Listas de Desejos]
+   |
+   +--> [Avaliações e Comentários]
+   |       |
+   |       +--> [Adicionar Avaliações] <---> [Base de Dados: Tabela de Avaliações]
+   |       +--> [Visualizar Avaliações e Comentários]
+   |
+   +--> [Opções de Pagamento Adicionais]
+   |       |
+   |       +--> [Pagamentos com Carteiras Digitais]
+   |       +--> [Parcelamento]
+   |
+   +--> [Notificações e Alertas]
+   |       |
+   |       +--> [Notificações de Pedido]
+   |       +--> [Alertas de Promoções]
+   |
+   +--> [Preferências e Configurações da Conta]
+   |       |
+   |       +--> [Atualizar Informações Pessoais] <---> [Base de Dados: Tabela de Usuários]
+   |       +--> [Gerenciar Preferências de Comunicação]
+   |
+   +--> [Processo de Compra e Pós-Venda]
+           |
+           +--> [Configurações de Frete]
+           +--> [Gestão de Devoluções e Trocas] <---> [Base de Dados: Tabela de Pedidos]

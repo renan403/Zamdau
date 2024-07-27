@@ -1,0 +1,24 @@
+[Usuário]
+   |
+   v
+[Servidor Web] 
+   | 
+   +---> [Base de Dados: Tabela de Produtos]
+   |         |
+   |         v
+   |    [Exibir Lista de Produtos]
+   |
+   +---> [Base de Dados: Tabela de Pedidos]
+   |         |
+   |         v
+   |    [Confirmar Pedido]
+   |
+   +---> [Base de Dados: Tabela de Usuários]
+   |         |
+   |         v
+   |    [Fazer Login / Cadastro]
+   |
+   +---> [Base de Dados: Tabela de Avaliações]
+   |         |
+   |         v
+   |    [Adicionar Avaliações]
