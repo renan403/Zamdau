@@ -1,6 +1,8 @@
 .hero {
-    background: url('https://via.placeholder.com/1500x500') no-repeat center center;
+    background: url('../images/Products/Designer (27).jpeg') no-repeat center center;
     background-size: cover;
+    background-color: black;
+    opacity: 95%;
     height: 500px;
     color: white;
     text-align: center;
@@ -131,7 +133,7 @@ body {
     margin-top: 20px;
 }
 
-input, textarea, select, button {
+input, textarea, select, button{
     background-color: var(--input-bg-color);
     color: var(--input-text-color);
     border: 1px solid var(--input-border-color);

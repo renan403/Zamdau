@@ -1,36 +1,36 @@
 ﻿@using Rcsp.Models;
 @model IEnumerable<Product>
+@{
+    ViewBag.Title = "Products";
+}
 
-    <!-- Hero Section -->
-    <div class="hero">
-        <h1>Bem-vindo à nossa Loja</h1>
-        <p>Os melhores produtos pelos melhores preços</p>
-        <a href="#" class="btn btn-primary btn-lg">Compre Agora</a>
-    </div>
+<div class="hero border-rounded-20 ">
+    <h1 class="bg-dark border-rounded-20 p-2 bg-opacity-75"> Wellcome to our store</h1>
+    <p class="bg-dark border-rounded-20 bg-opacity-75 p-2">The best products at the best prices</p>
+    <a href="#" class="btn btn-orange btn-lg">Buy now</a>
+</div>
 
-    <!-- Products Section -->
-    <div class="container mt-5">
-        <h2 class="text-center">Nossos Produtos</h2>
-        <div class="row mt-4">
-            @foreach (var produto in Model)
-            {
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <img src="@produto.ImagemUrl" class="card-img-top" alt="@produto.Nome">
-                        <div class="card-body">
-                            <h5 class="card-title">@produto.Nome</h5>
-                            <p class="card-text">@produto.Descricao</p>
-                            <a href="#" class="btn btn-primary">Comprar - @produto.Preco.ToString("C")</a>
-                        </div>
+<div class="container mt-5">
+    <h2 class="text-center">Our products</h2>
+    <div class="row mt-4">
+        @foreach (var produto in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 bg-opacity-75 bg-dark">
+                    <img src="@produto.ImagemUrl" class="card-img-top bg-black" alt="@produto.Nome">
+                    <div class="card-body">
+                        <h5 class="card-title text-light">@produto.Nome</h5>
+                        <p class="card-text text-light">@produto.Descricao</p>
+                        <a href="#" class=" btn-custom btn-orange"> @produto.Preco.ToString("C")</a>
                     </div>
                 </div>
-            }
-        </div>
+            </div>
+        }
     </div>
+</div>
 
-    <!-- About Section -->
-    <div class="container mt-5">
-        <h2 class="text-center">Sobre Nós</h2>
-        <p class="text-center">Somos uma loja dedicada a fornecer produtos de alta qualidade aos nossos clientes. Nossa missão é oferecer o melhor serviço e garantir a satisfação do cliente.</p>
-    </div>
+<div class="container mt-5">
+    <h2 class="text-center">Sobre Nós</h2>
+    <p class="text-center">Somos uma loja dedicada a fornecer produtos de alta qualidade aos nossos clientes. Nossa missão é oferecer o melhor serviço e garantir a satisfação do cliente.</p>
+</div>
 

@@ -18,9 +18,9 @@ namespace Rcsp.Controllers
         {
             var produtos = new List<Product>
         {
-            new Product { Id = 1, Nome = "Produto 1", Descricao = "Descrição breve do produto 1.", ImagemUrl = "https://via.placeholder.com/350x200", Preco = 100.00m },
-            new Product { Id = 2, Nome = "Produto 2", Descricao = "Descrição breve do produto 2.", ImagemUrl = "https://via.placeholder.com/350x200", Preco = 200.00m },
-            new Product { Id = 3, Nome = "Produto 3", Descricao = "Descrição breve do produto 3.", ImagemUrl = "https://via.placeholder.com/350x200", Preco = 300.00m }
+            new Product { Id = 1, Nome = "Monitor HD10k", Descricao = "Monitor with advanced 22nd century technology", ImagemUrl = "./images/Products/Monitor/Designer (19).jpeg", Preco = 2500.00m },
+            new Product { Id = 2, Nome = "Keyboard XXIIV", Descricao = "Keyboard with advanced 23nd century technology", ImagemUrl = "./images/Products/KeyBoard/Designer (15).jpeg", Preco = 500.00m },
+            new Product { Id = 3, Nome = "Zamdau console", Descricao = "Exclusive Zamdau console", ImagemUrl = "./images/Products/Console/Designer (23).jpeg", Preco = 1000.00m },
         };
             return View(produtos);
         }
