@@ -8,6 +8,19 @@
     --color-light-orange: rgba(255, 153, 0, 0.01);
 }
 
+.width-max-min {
+    min-width: 312px;
+    max-width: 360px;
+}
+.g-recaptcha {
+    width: 302px;
+    margin: auto;
+}
+
+a{
+    text-decoration:none
+}
+
 .border-rounded-10{
     border-radius: 10%
 }

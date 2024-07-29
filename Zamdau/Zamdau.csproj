@@ -16,14 +16,16 @@
 
   <ItemGroup>
     <Folder Include="Interfaces\" />
+    <Folder Include="Views\Partial\" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\User\PasswordReset.cshtml" />
     <None Include="wwwroot\js\JSTest.js" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.7" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
 </Project>
