@@ -16,7 +16,7 @@ namespace Rcsp.Controllers
         
         public IActionResult Index()
         {
-            return RedirectToAction("PasswordSent", "User");
+            return RedirectToAction("SignUp", "User");
             var produtos = new List<Product>
         {
             new Product { Id = 1, Nome = "Monitor HD10k", Descricao = "Monitor with advanced 22nd century technology", ImagemUrl = "./images/Products/Monitor/Designer (19).jpeg", Preco = 2500.00m },

@@ -1,7 +1,11 @@
+using Rcsp.Models;
+using Zamdau.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IUser,User>();
 
 var app = builder.Build();
 

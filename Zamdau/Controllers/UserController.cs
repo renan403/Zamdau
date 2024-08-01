@@ -1,9 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Zamdau.Interfaces;
 namespace Rcsp.Controllers
 {
     public class UserController : Controller
     {
+        public IUser _user;
+        public UserController(IUser user) 
+        { 
+            _user = user;
+        }
         public IActionResult Login()
         {
             return View();
@@ -15,6 +21,7 @@ namespace Rcsp.Controllers
         }
         public IActionResult SignUp()
         {
+            var teste = _user.Register();
             return View();
         }
         [HttpGet]
