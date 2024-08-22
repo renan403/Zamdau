@@ -1,0 +1,97 @@
+00:32:04 : Exception occured while processing the request.
+Url: https://zamdau-f3b04-default-rtdb.firebaseio.com/user/5cxx2bRSa7Mh8lIqkhGWFSpAuCr1/.json?print=silent&auth=5cxx2bRSa7Mh8lIqkhGWFSpAuCr1
+Request Data: {"UserID":null,"Name":null,"Password":null,"Email":"renan@gmail.com","EmailID":null,"CreatedAt":"0001-01-01T00:00:00"}
+Response: {
+  "error" : "Permission denied"
+}
+
+00:32:05 : Exception occured while authenticating.
+Url: https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key={0}
+Request Data: {"email":"","password":"","returnSecureToken":true}
+Response: {
+  "error": {
+    "code": 400,
+    "message": "INVALID_EMAIL",
+    "errors": [
+      {
+        "message": "INVALID_EMAIL",
+        "domain": "global",
+        "reason": "invalid"
+      }
+    ]
+  }
+}
+
+Reason: InvalidEmailAddress
+23:33:10 : Exception occured while authenticating.
+Url: https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key={0}
+Request Data: {"email":"","password":"","returnSecureToken":true}
+Response: {
+  "error": {
+    "code": 400,
+    "message": "INVALID_EMAIL",
+    "errors": [
+      {
+        "message": "INVALID_EMAIL",
+        "domain": "global",
+        "reason": "invalid"
+      }
+    ]
+  }
+}
+
+Reason: InvalidEmailAddress
+23:33:11 : Exception occured while authenticating.
+Url: https://www.googleapis.com/identitytoolkit/v3/relyingparty/deleteAccount?key={0}
+Request Data: {"idToken":""}
+Response: {
+  "error": {
+    "code": 400,
+    "message": "INVALID_ID_TOKEN",
+    "errors": [
+      {
+        "message": "INVALID_ID_TOKEN",
+        "domain": "global",
+        "reason": "invalid"
+      }
+    ]
+  }
+}
+
+Reason: InvalidIDToken
+23:34:33 : Exception occured while authenticating.
+Url: https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key={0}
+Request Data: {"email":"renancporto94@gmail.com","password":"123456","returnSecureToken":true}
+Response: {
+  "error": {
+    "code": 400,
+    "message": "EMAIL_EXISTS",
+    "errors": [
+      {
+        "message": "EMAIL_EXISTS",
+        "domain": "global",
+        "reason": "invalid"
+      }
+    ]
+  }
+}
+
+Reason: EmailExists
+23:34:33 : Exception occured while authenticating.
+Url: https://www.googleapis.com/identitytoolkit/v3/relyingparty/deleteAccount?key={0}
+Request Data: {"idToken":""}
+Response: {
+  "error": {
+    "code": 400,
+    "message": "INVALID_ID_TOKEN",
+    "errors": [
+      {
+        "message": "INVALID_ID_TOKEN",
+        "domain": "global",
+        "reason": "invalid"
+      }
+    ]
+  }
+}
+
+Reason: InvalidIDToken

@@ -1,22 +1,25 @@
 using Microsoft.AspNetCore.Mvc;
-using Rcsp.Models;
+using Zamdau.Models;
 using System.Diagnostics;
+using Firebase.Auth;
+using Zamdau.Interfaces;
 
-namespace Rcsp.Controllers
+namespace Zamdau.Controllers
 {
-    
-    public class HomeController : Controller
-    {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+    public class HomeController(ILogger<HomeController> logger, IUser user) : Controller
+    {
+        private readonly ILogger<HomeController> _logger = logger;
+        private readonly IUser _user = user;
+
+        public async Task<IActionResult> Index()
         {
-            _logger = logger;
-        }
-        
-        public IActionResult Index()
-        {
-            return RedirectToAction("SignUp", "User");
+            ViewBag.token = HttpContext.Session.GetString("tokenClient");
+
+            if (!string.IsNullOrEmpty(ViewBag.token))
+            {
+               var user = await _user.InfoUser(ViewBag.token);
+            }
             var produtos = new List<Product>
         {
             new Product { Id = 1, Nome = "Monitor HD10k", Descricao = "Monitor with advanced 22nd century technology", ImagemUrl = "./images/Products/Monitor/Designer (19).jpeg", Preco = 2500.00m },

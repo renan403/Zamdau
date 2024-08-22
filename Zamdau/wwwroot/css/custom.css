@@ -1,4 +1,78 @@
-﻿:root {
+﻿
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50px;
+    background-color: #111;
+    padding-top: 20px;
+    transition: width 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: solid 1px white;
+}
+
+    .sidebar:hover {
+        width: 140px;
+    }
+
+    .sidebar a {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        text-decoration: none;
+        color: #818181;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+        .sidebar a svg {
+            flex-shrink: 0;
+        }
+
+        .sidebar a .text {
+            margin-left: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+    .sidebar:hover a .text {
+        opacity: 1;
+    }
+
+    .sidebar a:hover {
+        background-color: #575757;
+        color: #f1f1f1;
+    }
+    /* Sign out */
+        .sidebar .signout {
+            margin-top: auto;
+            margin-bottom: 20px;
+        }
+
+/* Main content */
+.content {
+    flex: 1;
+    padding: 8px;
+    margin-left: 25px;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar:hover ~ .content {
+    margin-left: 125px;
+}
+
+
+
+.logo {
+    width: 30px;
+}
+:root {
     --color-orange: #ff6a00;
     --color-dark-orange: #d95a00;
     --color-black: #000000;
@@ -22,13 +96,17 @@ a{
 }
 
 .border-rounded-10{
-    border-radius: 10%
+    border-radius: 10px
 }
 .border-rounded-20 {
     border-radius: 20px
 }
 .border-rounded-100 {
-    border-radius: 100%
+    border-radius: 100px
+}
+.border-orange {
+    border-bottom : 1px solid;
+    border-color : orange;
 }
 
 .btn-outline-orange {
@@ -111,3 +189,52 @@ a{
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+/* Conteúdo do modal */
+.modal-content {
+    background-color: #fefefe;
+    margin: 20% auto;
+    padding: 2%;
+    border: 1px solid #888;
+    width: 20%;
+}
+
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+@media (max-width: 768px) {
+    .modal-content {
+        background-color: #fefefe;
+        margin: 70% auto;
+        padding: 8%;
+        border: 1px solid #888;
+        width: 60%;
+    }
+
+    .close {
+        color: #aaa;
+        position: absolute;
+        top: 0px;
+        right: 20px;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+}

@@ -1,4 +1,4 @@
-namespace Rcsp.Models
+namespace Zamdau.Models
 {
     public class ErrorViewModel
     {

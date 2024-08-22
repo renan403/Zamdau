@@ -5,7 +5,9 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zamdau", "Zamdau\Zamdau.csproj", "{CCB71886-9715-441E-90CF-69495E8A4A5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_Zamdau", "API_Zamdau\API_Zamdau.csproj", "{7BDFD77B-2D9D-4892-A91E-FF0EEB8044F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API_Zamdau", "API_Zamdau\API_Zamdau.csproj", "{7BDFD77B-2D9D-4892-A91E-FF0EEB8044F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestZamdau", "TestZamdau\TestZamdau.csproj", "{96C1F932-56CC-499C-B89E-3FA1CE9D8228}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7BDFD77B-2D9D-4892-A91E-FF0EEB8044F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BDFD77B-2D9D-4892-A91E-FF0EEB8044F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BDFD77B-2D9D-4892-A91E-FF0EEB8044F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96C1F932-56CC-499C-B89E-3FA1CE9D8228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96C1F932-56CC-499C-B89E-3FA1CE9D8228}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96C1F932-56CC-499C-B89E-3FA1CE9D8228}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96C1F932-56CC-499C-B89E-3FA1CE9D8228}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

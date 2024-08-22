@@ -1,4 +1,4 @@
-﻿@model Rcsp.Models.SignIn
+﻿@model Zamdau.Models.SignIn
 @{
     ViewBag.Title = "Login";
 }
@@ -16,7 +16,7 @@
             <div class="p-1">
 
                 <div class="form-floating">
-                    @Html.TextBoxFor(email => email.Login, new { @type = "email", @style = "border-radius:5px", @id = "floatingInput", @class = "form-control", @placeholder = "Email address", @autocomplete = "email" })
+                    @Html.TextBoxFor(email => email.Email, new { @type = "email", @style = "border-radius:5px", @id = "floatingInput", @class = "form-control", @placeholder = "Email address", @autocomplete = "email" })
                     <label for="floatingInput" class="text-dark opacity-50" style="font-size:15px">Email address</label>
                 </div>
             </div>
@@ -32,6 +32,12 @@
                     Remember me
                 </label>
             </div>
+            <p class="text-danger">@Html.ViewBag.IsAutenticatedError</p>
+            @if (!string.IsNullOrEmpty(Html.ViewBag.IsAutenticatedError))
+            {
+                @Html.ActionLink("Resend your email validation.", "ReSendValidateInEmail", "User", null, new { @class = "btn-custom btn-orange w-100 py-0 mt-1" })
+            }
+            <p class="text-danger">@Html.ViewBag.Error</p>
             <button class="btn btn-primary w-100 py-0" type="submit">Sign in</button>
             <a class="btn btn-dark w-100 py-0 mt-1" asp-action="SignUp">Sign up</a>
             <a class="" asp-action="PasswordReset">Forgot password?</a>

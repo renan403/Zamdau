@@ -4,6 +4,8 @@
     background-color: black;
     opacity: 95%;
     height: 500px;
+    width: 90%;
+    margin: auto;
     color: white;
     text-align: center;
     display: flex;
@@ -13,8 +15,8 @@
 }
 
     .hero h1 {
-        font-size: 4rem;
-        font-weight: bold;
+        font-size: 2.5rem;
+        font-weight: lighter;
     }
 
     .hero p {
@@ -48,30 +50,7 @@
     background-color: rgba(0,0,0,0.4);
 }
 
-/* Conteúdo do modal */
-.modal-content {
-    background-color: #fefefe;
-    margin: 20% auto;
-    padding: 2%;
-    border: 1px solid #888;
-    width: 20%;
-}
 
-.close {
-    color: #aaa;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-    .close:hover,
-    .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
 
 /* Modo noturno */
 body.dark-mode .modal-content {
@@ -89,9 +68,10 @@ body.dark-mode .modal-content {
     --input-border-color: #ccc;
 }
 
-.content{
-   flex: 1 0 auto;
+.content {
+    flex: 1 0 auto;
 }
+
 footer {
     flex-shrink: 0;
 }
@@ -106,13 +86,14 @@ body {
     height: 100%;
 }
 
-body.dark-mode {
-    --bg-color: #121212;
-    --text-color: #ffffff;
-    --input-bg-color: #333;
-    --input-text-color: #fff;
-    --input-border-color: #555;
-}
+    body.dark-mode {
+        --bg-color: #121212;
+        --text-color: #ffffff;
+        --input-bg-color: #333;
+        --input-text-color: #fff;
+        --input-border-color: #555;
+    }
+
 body {
     display: flex;
     flex-direction: column;
@@ -120,6 +101,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
 }
+
 .input-field {
     margin-bottom: 20px;
 }
@@ -133,7 +115,7 @@ body {
     margin-top: 20px;
 }
 
-input, textarea, select, button{
+input, textarea, select, button {
     background-color: var(--input-bg-color);
     color: var(--input-text-color);
     border: 1px solid var(--input-border-color);
@@ -144,16 +126,17 @@ input, textarea, select, button{
     }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
+
     .bd-placeholder-img-lg {
         font-size: 3.5rem;
     }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 

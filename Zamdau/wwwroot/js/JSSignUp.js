@@ -35,7 +35,7 @@ function validateForm() {
     const confirmPassword = document.getElementById('confirm-password').value;
 
     if (password !== confirmPassword) {
-        showAlert('A senha e a confirmação de senha não coincidem.');
+        showAlert('Passwords and password confirmation do not match.');
         return false;
     }
 
