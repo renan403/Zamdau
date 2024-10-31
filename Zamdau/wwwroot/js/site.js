@@ -1,4 +1,5 @@
-﻿document.addEventListener('DOMContentLoaded', (event) => {
+﻿/*
+document.addEventListener('DOMContentLoaded', (event) => {
     const themeToggleButton = document.getElementById('bd-theme');
     const themeIcon = document.querySelector('.theme-icon-active');
     const themeText = document.getElementById('bd-theme-text');
@@ -54,4 +55,4 @@
     // Set initial theme based on preference
     setTheme('auto');
 });
-
+ */

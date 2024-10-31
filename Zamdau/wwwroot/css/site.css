@@ -38,9 +38,9 @@
     padding: 20px 0;
 }
 /* Estilo básico do modal */
-.modal {
+.modal-captcha {
     display: none;
-    position: fixed;
+    position: absolute;
     z-index: 1000;
     left: 0;
     top: 0;
@@ -49,24 +49,14 @@
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
 }
-
-
-
-/* Modo noturno */
-body.dark-mode .modal-content {
-    background-color: black;
-    color: white;
-    border: 1px solid white;
-}
-
-
 :root {
-    --bg-color: #fff;
-    --text-color: #000;
-    --input-bg-color: #fff;
-    --input-text-color: #000;
-    --input-border-color: #ccc;
+    --bg-color: #121212;
+    --text-color: black;
+    --input-bg-color: #333;
+    --input-text-color: black;
+    --input-border-color: #555;
 }
+
 
 .content {
     flex: 1 0 auto;
@@ -85,14 +75,6 @@ html,
 body {
     height: 100%;
 }
-
-    body.dark-mode {
-        --bg-color: #121212;
-        --text-color: #ffffff;
-        --input-bg-color: #333;
-        --input-text-color: #fff;
-        --input-border-color: #555;
-    }
 
 body {
     display: flex;
@@ -156,6 +138,15 @@ input, textarea, select, button {
         border-bottom-left-radius: 0;
     }
 
+    .helpCenter{
+       
+        max-width : 90%;
+        padding:1rem;
+    }
+        .helpCenter .form-floating:focus-within {
+            z-index: 3;
+        }
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -202,26 +193,153 @@ input, textarea, select, button {
         -webkit-overflow-scrolling: touch;
     }
 
-.btn-bd-primary {
-    --bd-violet-bg: #712cf9;
-    --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-    --bs-btn-font-weight: 600;
-    --bs-btn-color: var(--bs-white);
-    --bs-btn-bg: var(--bd-violet-bg);
-    --bs-btn-border-color: var(--bd-violet-bg);
-    --bs-btn-hover-color: var(--bs-white);
-    --bs-btn-hover-bg: #6528e0;
-    --bs-btn-hover-border-color: #6528e0;
-    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-    --bs-btn-active-color: var(--bs-btn-hover-color);
-    --bs-btn-active-bg: #5a23c8;
-    --bs-btn-active-border-color: #5a23c8;
+/*/--------------------------------------------------------- Shopping Cart ---------------------------------------------------------/*/
+
+.btn-inc-dec {
+    width: 15px;
+    height: 27px
 }
 
-.bd-mode-toggle {
-    z-index: 1500;
+.input-cart {
+    height: 39px;
+    border-radius: 5px;
 }
 
-    .bd-mode-toggle .dropdown-menu .active .bi {
-        display: block !important;
+.cart-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-items {
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+    flex-wrap: wrap; /* Permite quebra de linha */
+}
+
+    .cart-item img {
+        width: 80px;
+        height: auto;
+        border-radius: 8px;
     }
+
+.item-details {
+    flex: 1;
+    margin-left: 15px;
+}
+
+    .item-details h3 {
+        margin: 0;
+        font-size: 18px;
+    }
+
+.quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    justify-content: center; /* Centraliza horizontalmente */
+}
+
+    .quantity input {
+        width: 50px;
+        text-align: center;
+        margin: 0 5px;
+    }
+
+    .quantity button {
+        background-color: #eee;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 18px; /* Aumenta o tamanho da fonte para melhorar a usabilidade */
+    }
+
+.remove-item {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    align-self: flex-start; /* Mantém o botão de remoção alinhado no topo */
+    margin-top: 10px;
+}
+
+.cart-summary {
+    text-align: right;
+    margin-top: 20px;
+}
+
+    .cart-summary h2 {
+        margin-bottom: 15px;
+    }
+
+    .cart-summary p {
+        margin: 5px 0;
+    }
+
+.checkout-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/*------------------------------------------------------------------ Address -----------------------------------------------------------------------------*/
+
+
+
+.address-list {
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.address-form[data-main="true"] {
+    background-color: #1abc9c;
+}
+
+.address-form.main {
+    border-color: rgba(255, 161, 23, 0.6);
+    box-shadow: 0 2px 15px rgba(255, 161, 23, 0.6);
+}
+
+.address-form {
+    border: 1px solid rgba(141, 141, 141, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(141, 141, 141, 0.8);
+    margin-bottom: 20px;
+}
+
+.minimal-input {
+    color: #000;
+}
+
+.btn-address {
+    min-width: 120px; /* Melhor espaçamento dos botões */
+}
+
+#addAddressButton {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.form-check-input:checked {
+    background-color: #f39c12; /* Cor do checkbox selecionado */
+}
+
+.form-check-label {
+    font-weight: bold;
+}

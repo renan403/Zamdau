@@ -98,6 +98,13 @@ namespace Zamdau.Controllers
                 return View("PasswordReset", new ResetPWD() { Error = errors });
             }
         }
+        [HttpGet]
+        public IActionResult Cart() => View();
+
+        [HttpGet]
+        public IActionResult Address() => View();
+        [HttpGet]
+        public IActionResult AddAddress() => View();
 
         [HttpGet]
         public IActionResult PasswordSent() => View();
@@ -107,7 +114,7 @@ namespace Zamdau.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
+        
 
         public async Task<CaptchaResponse?> ValidationRecaptcha(IFormCollection form)
         {

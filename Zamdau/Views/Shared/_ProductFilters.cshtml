@@ -1,0 +1,58 @@
+﻿@model List<ModelTest>
+
+
+<form id="filterForm" method="get" class="d-flex flex-wrap align-items-center gap-2 m-3 rounded">
+    <!-- Filtro de Nome do Produto -->
+    <div class="flex-fill" style="min-width: 200px;">
+        <label for="productName" class="form-label">Nome do Produto</label>
+        <input type="text" id="productName" name="productName" class="form-control" onkeyup="applyFilters()" placeholder="Digite o nome do produto" autocomplete="off">
+    </div>
+
+    <!-- Filtro de Marca -->
+    <div class="flex-fill" style="min-width: 200px;">
+        <label for="brand" class="form-label">Marca</label>
+        <select id="brand" name="brand" class="form-select" onchange="applyFilters()">
+            <option value="">Selecione uma marca</option>
+            <option value="marca1">Marca 1</option>
+            <option value="marca2">Marca 2</option>
+            <option value="marca3">Marca 3</option>
+        </select>
+    </div>
+
+    <!-- Filtro de Faixa de Preço -->
+    <div class="flex-fill" style="min-width: 200px;">
+        <label for="priceRange" class="form-label">Faixa de Preço</label>
+        <select id="priceRange" name="priceRange" class="form-select" onchange="applyFilters()">
+            <option value="">Selecione uma faixa de preço</option>
+            <option value="0-50">R$ 0 - R$ 50</option>
+            <option value="51-100">R$ 51 - R$ 100</option>
+            <option value="101-200">R$ 101 - R$ 200</option>
+            <option value="200+">R$ 200+</option>
+        </select>
+    </div>
+</form>
+
+
+<div id="productList">
+    @await Html.PartialAsync("_ProductList", Model)
+</div>
+
+
+<script>
+
+    function applyFilters() {
+        // Serializa o formulário e envia a requisição AJAX
+        const formData = $("#filterForm").serialize();
+
+        $.ajax({
+            url: '/Home/Filtrar', // Rota para a Action que processa os filtros
+            type: 'GET',
+            data: formData,
+            success: function (result) {
+                // Atualiza a área de produtos com o HTML retornado
+                $("#productList").html(result);
+            }
+        });
+
+    }
+</script>

@@ -1,0 +1,30 @@
+﻿@model List<ModelTest>
+
+<div class="container mt-3 text-light">
+    <h2 class="text-center">Products</h2>
+    <div class="row mt-4">
+        @foreach (var produto in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 bg-opacity-75 bg-dark">
+                    <img src="@produto.UrlImg" class="card-img-top bg-black" alt="@produto.NomeProd">
+                    <div class="card-body">
+                        <h5 class="card-title text-light">@produto.NomeProd</h5>
+                        <p class="card-text text-light">@produto.DescriProd</p>
+                        <a href="#" class=" btn-custom btn-orange"> @produto.PrecoProd</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(ViewBag.CurrentPage == i ? "active" : "")">
+                <a class="page-link" href="@Url.Action("Products", new {page = i,brand = @ViewBag.FilterBrand, priceRange = @ViewBag.FilterPrice  })">@i</a>
+            </li>
+        }
+    </ul>
+</nav>

@@ -1,0 +1,65 @@
+﻿.suggestion-box {
+    position: absolute;
+    background-color: #343a40; /* Cor escura para o fundo */
+    color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 300px; /* Ajuste para corresponder ao campo de pesquisa */
+    display: none;
+    z-index: 1000;
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+    .suggestion-item:hover {
+        background-color: #495057; /* Cor de hover */
+    }
+
+
+
+
+.container {
+    margin-top: 20px;
+}
+
+.product-card {
+    background-color: #444;
+    border: none;
+    border-radius: 5px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+    .product-card img {
+        max-width: 100%;
+        border-radius: 5px;
+    }
+
+.suggestion-box {
+    position: absolute;
+    background-color: #555;
+    color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 300px;
+    display: none;
+    z-index: 1000;
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+    .suggestion-item:hover {
+        background-color: #666;
+    }

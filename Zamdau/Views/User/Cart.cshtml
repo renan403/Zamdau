@@ -1,0 +1,103 @@
+﻿@{
+    ViewData["Title"] = "Cart";
+}
+
+
+<div class="container m-2">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
+            <li class="breadcrumb-item">
+                <a class="  text-decoration-none link-orange" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                    </svg>
+                    Account
+                </a>
+            </li>
+            <li class="breadcrumb-item ">
+                <a class="text-decoration-none  text-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                    </svg>
+                    Cart
+                </a>
+            </li>
+        </ol>
+    </nav>
+</div>
+@if (1 == 2)
+{
+    <div class="container m-3">
+        <div class="col">
+            <div class=" text-light shadow-sm">
+                <div class="card-body text-center justify-content-between align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-duffle" viewBox="0 0 16 16">
+                        <path d="M8 5.75c1.388 0 2.673.193 3.609.385a18 18 0 0 1 1.43.354l.112.034.002.001h.001a.5.5 0 0 1-.308.952l-.004-.002-.018-.005a17 17 0 0 0-1.417-.354A17.3 17.3 0 0 0 8 6.75a17.3 17.3 0 0 0-3.408.365 17 17 0 0 0-1.416.354l-.018.005-.003.001a.5.5 0 1 1-.308-.95A17.3 17.3 0 0 1 8 5.75" />
+                        <path d="M5.229 2.722c-.126.461-.19.945-.222 1.375-1.401.194-2.65.531-3.525 1.012C-.644 6.278.036 11.204.393 13.127a.954.954 0 0 0 .95.772h13.314a.954.954 0 0 0 .95-.772c.357-1.923 1.037-6.85-1.09-8.018-.873-.48-2.123-.818-3.524-1.012a7.4 7.4 0 0 0-.222-1.375c-.162-.593-.445-1.228-.971-1.622-1.115-.836-2.485-.836-3.6 0-.526.394-.81 1.03-.971 1.622M9.2 1.9c.26.195.466.57.606 1.085.088.322.142.667.173.998a23.3 23.3 0 0 0-3.958 0 6 6 0 0 1 .173-.998c.14-.515.346-.89.606-1.085.76-.57 1.64-.57 2.4 0M8 4.9c2.475 0 4.793.402 6.036 1.085.238.13.472.406.655.93.183.522.28 1.195.303 1.952.047 1.486-.189 3.088-.362 4.032H1.368c-.173-.944-.409-2.545-.362-4.032.024-.757.12-1.43.303-1.952.183-.524.417-.8.655-.93C3.207 5.302 5.525 4.9 8 4.9" />
+                    </svg>
+                    <p class="card-text">Your shopping cart is empty</p>
+                    <button type="button" class="btn btn-sm btn-outline-orange">Go shopping</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+<div class="cart-container  text-light">
+    <h1 class="border border-rounded-10 p-3 text-center">Shopping Cart</h1>
+    <div class="cart-items">
+        <div class="cart-item">
+            <img src="https://i0.wp.com/otakudiario.com.br/wp-content/uploads/2024/01/3770b55ecd70a348460acea909d60e23.jpg" alt="Product 2">
+            <div class="item-details">
+                <a href="#" class="link-orange"><h5>Guts</h5></a>
+                <div class="d-flex">
+                    <p class="price me-3" data-price="29.99">$29.99</p>
+                    <p class="me-1">Total:</p>
+                    <p class="total-price link-yellow">$29.99</p>
+                </div>
+
+                <div class="quantity">
+                    <button class="btn decrease"><div class="btn-inc-dec">-</div></button>
+                    <input class="bg-light input-cart" type="number" value="1" min="1">
+                    <button class="btn increase"><div class="btn-inc-dec">+</div></button>
+                </div>
+
+            </div>
+            <button class="remove-item">Remove</button>
+        </div>
+    </div>
+        <div class="cart-item">
+            <img src="https://miro.medium.com/v2/resize:fit:827/1*d80k8EYLIz2fGOmvtQ0fng.jpeg" alt="Product 2">
+            <div class="item-details">
+                <a href="#" class="link-orange"><h5>Griffth</h5></a>
+                <div class="d-flex">
+                    <p class="price me-3" data-price="19.99">$19.99</p> 
+                    <p class="me-1">Total:</p> 
+                    <p class="total-price link-yellow">$19.99</p>
+                </div>
+                
+                <div class="quantity">
+                    <button class="btn decrease"><div class="btn-inc-dec">-</div></button>
+                    <input class="bg-light input-cart" type="number" value="1" min="1">
+                    <button class="btn increase"><div class="btn-inc-dec">+</div></button>
+                </div>
+               
+            </div>
+            <button class="remove-item">Remove</button>
+        </div>
+        <div class="cart-summary text-light">
+            <h2>Order Summary</h2>
+            <p class="subtotal">Subtotal: $49.98</p>
+            <p class="tax">Tax: $4.99</p>
+            <p><strong class="total">Total: $54.97</strong></p>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    
+ 
+}
+

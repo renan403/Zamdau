@@ -11,6 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Home\HelpCenter.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Home\Products.cshtml" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\testes.css" />
     <_ContentIncludedByDefault Remove="wwwroot\js\JSTest.js" />
   </ItemGroup>
 
@@ -19,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\User\AddAddress.cshtml" />
     <None Include="Views\User\PasswordReset.cshtml" />
     <None Include="wwwroot\js\JSTest.js" />
   </ItemGroup>
@@ -29,6 +33,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\API_Zamdau\API_Zamdau.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Home\HelpCenter.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Home\Products.cshtml" />
   </ItemGroup>
 
 </Project>

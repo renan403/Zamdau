@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Sign Up";
 }
-<div class="form-signin m-auto w-100 d-flex align-items-center justify-content-center" style="min-height: 70vh;">
+<div class="form-signin m-auto w-100 d-flex align-items-center justify-content-center text-light"  style="min-height: 70vh;">
     <div class="w-100" style="max-width: 330px;">
         @using (Html.BeginForm("SignUp", "User", FormMethod.Post, new { @id = "dynamic-form"  , @onsubmit = "return validateForm()" }))
         {
@@ -45,9 +45,9 @@
 
 </div>
 <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
-<div id="custom-alert-modal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeAlert()">&times;</span>
+<div id="custom-alert-modal" class="modal-captcha">
+    <div class="modal-content-captcha">
+        <span class="close-captcha" onclick="closeAlert()">&times;</span>
         <p id="alert-message"></p>
     </div>
 </div>
