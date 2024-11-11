@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Zamdau.Models;
 using System.Diagnostics;
 using Zamdau.Interfaces;
+using System.Reflection;
 
 namespace Zamdau.Controllers
 {
@@ -42,12 +43,32 @@ namespace Zamdau.Controllers
 
         [HttpGet]
         public IActionResult SignUp() => View();
+        [HttpGet]
+        public IActionResult MyAccount() => View(new Account
+        {
+            Name = "John Doe",
+            Age = 28,
+            Gender = "Masculino",
+            CountryCode = "+55",
+            Email = "john.doe@email.com",
+            Phone = "(11) 11111-1111"
+        }
+            );
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SignUp(SignUp signUp,IFormCollection form)
+        public IActionResult MyAccount(Account model)
         {
-            
+            if (ModelState.IsValid)
+            {
+                //save information
+            }
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SignUp(SignUp signUp, IFormCollection form)
+        {
+
             if (ModelState.IsValid)
             {
                 var captchaVerification = await ValidationRecaptcha(form);
@@ -114,7 +135,7 @@ namespace Zamdau.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        
+
 
         public async Task<CaptchaResponse?> ValidationRecaptcha(IFormCollection form)
         {

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\JSCart.js" />
     <Content Remove="wwwroot\js\JSTest.js" />
   </ItemGroup>
 
@@ -14,16 +15,14 @@
     <_ContentIncludedByDefault Remove="Views\Home\HelpCenter.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Home\Products.cshtml" />
     <_ContentIncludedByDefault Remove="wwwroot\css\testes.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\JSCart.js" />
     <_ContentIncludedByDefault Remove="wwwroot\js\JSTest.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Partial\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Views\User\AddAddress.cshtml" />
     <None Include="Views\User\PasswordReset.cshtml" />
+    <None Include="wwwroot\js\JSCart.js" />
     <None Include="wwwroot\js\JSTest.js" />
   </ItemGroup>
 

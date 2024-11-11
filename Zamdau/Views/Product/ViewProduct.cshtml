@@ -1,0 +1,116 @@
+﻿@model Product
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<div class="container">
+
+
+
+<div class="product-container m-auto my-5 m-3 ">
+    <div class="row">
+        <!-- Product Image -->
+        <div class="col-md-6 bg-opacity-25  rounded mt-1">
+                <img src="@Model.ImageUrl" alt="Product" class=" img-product rounded">
+        </div>
+
+        <!-- Product Information -->
+        <div class="col-md-6  mt-1">
+            <h2>@Model.Name</h2>
+            <p class="text-secondary">Code: Code</p>
+
+            <!-- Stock Warning Message -->
+            @if (Model.Quantity == 0)
+            {
+                <div class="alert alert-danger">
+                    Attention: No more units in stock!
+                </div>
+            }
+            else if (Model.Quantity < 3)
+            {
+                <div class="alert alert-warning">
+                    Attention: Only <strong>@Model.Quantity</strong> units left in stock!
+                </div>
+            }
+
+            <!-- Manufacturer, Type, and Availability -->
+            <ul class="list-group list-group-flush mb-3">
+                <li class="list-group-item bg-dark ">
+                    <strong>Manufacturer:</strong> Manufacturer
+                </li>
+                <li class="list-group-item bg-dark ">
+                    <strong>Type:</strong> Type
+                </li>
+                <li class="list-group-item bg-dark ">
+                    <strong>Availability:</strong> Availability
+                </li>
+                <li class="list-group-item bg-dark ">
+                    <strong>Quantity:</strong>
+                    <select class="form-select d-inline-block w-auto bg-dark  border-light" style="width: 70px;" id="quantitySelect">
+                        <option value="0" selected>Select</option>
+                        @for (int i = 1; i <= (Model.Quantity > 5 ? 5 : Model.Quantity); i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                </li>
+                <li class="list-group-item bg-dark ">
+                    <strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.0 out of 5)
+                </li>
+            </ul>
+
+            <!-- Technical Specifications -->
+            <div class="mb-3">
+                <h4>Technical Specifications</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-dark ">
+                        <strong>Material:</strong> Material
+                    </li>
+                    <li class="list-group-item bg-dark ">
+                        <strong>Dimensions:</strong> Dimensions
+                    </li>
+                    <li class="list-group-item bg-dark ">
+                        <strong>Weight:</strong> Weight
+                    </li>
+                    <li class="list-group-item bg-dark ">
+                        <strong>Color:</strong> Color
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Description -->
+            <div class="my-3">
+                <h4>Description</h4>
+                <p>@Model.Description</p>
+            </div>
+
+            <!-- Price and Buttons -->
+            <h3 class="my-3">Price: $@Model.Price</h3>
+            <button class="btn btn-outline-secondary btn-lg">Add to Cart</button>
+            <button class="btn btn-outline-success btn-lg ms-2">Buy Now</button>
+        </div>
+    </div>
+
+    <!-- Customer Reviews Section -->
+    <div class="row mt-5">
+        <div class="col-12 ">
+            <h4>Customer Reviews</h4>
+            <div class="list-group">
+                <!-- Example Reviews -->
+                <div class="list-group-item bg-dark  border-light">
+                    <h5 class="mb-1">User 1</h5>
+                    <p>⭐⭐⭐⭐⭐ - Excellent product! It met all my expectations.</p>
+                    <small class="text-secondary">Review date: 10/01/2024</small>
+                </div>
+                <div class="list-group-item bg-dark  border-light">
+                    <h5 class="mb-1">User 2</h5>
+                    <p>⭐⭐⭐☆☆ - Good product, but could have better quality in the details.</p>
+                    <small class="text-secondary">Review date: 09/25/2024</small>
+                </div>
+                <!-- Add more reviews as needed -->
+            </div>
+        </div>
+    </div>
+</div>
+</div>

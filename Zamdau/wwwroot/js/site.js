@@ -56,3 +56,24 @@ document.addEventListener('DOMContentLoaded', (event) => {
     setTheme('auto');
 });
  */
+
+    const editButton = document.getElementById('editButton');
+    const saveButton = document.getElementById('saveButton');
+    const cancelButton = document.getElementById('cancelButton');
+
+    // Alterna entre os modos de visualização e edição
+    editButton.addEventListener('click', () => toggleEditMode(true));
+    cancelButton.addEventListener('click', () => toggleEditMode(false));
+
+    function toggleEditMode(isEditing) {
+        const inputs = document.querySelectorAll('#profileForm input, #profileForm select');
+    const displays = document.querySelectorAll('#profileForm p');
+
+        inputs.forEach(input => input.classList.toggle('d-none', !isEditing));
+        displays.forEach(display => display.classList.toggle('d-none', isEditing));
+
+    editButton.classList.toggle('d-none', isEditing);
+    saveButton.classList.toggle('d-none', !isEditing);
+    cancelButton.classList.toggle('d-none', !isEditing);
+    }
+

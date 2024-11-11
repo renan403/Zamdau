@@ -1,36 +1,37 @@
-﻿@model List<ModelTest>
+﻿@model List<Product>
 
 
-<form id="filterForm" method="get" class="d-flex flex-wrap align-items-center gap-2 m-3 rounded">
-    <!-- Filtro de Nome do Produto -->
+<form id="filterForm" method="get" class="d-flex flex-wrap align-items-center gap-2 m-3 rounded ">
+    <!-- Product Name Filter -->
     <div class="flex-fill" style="min-width: 200px;">
-        <label for="productName" class="form-label">Nome do Produto</label>
-        <input type="text" id="productName" name="productName" class="form-control" onkeyup="applyFilters()" placeholder="Digite o nome do produto" autocomplete="off">
+        <label for="productName" class="form-label">Product Name</label>
+        <input type="text" id="productName" name="productName" class="form-control" onkeyup="applyFilters()" placeholder="Enter the product name" autocomplete="off">
     </div>
 
-    <!-- Filtro de Marca -->
+    <!-- Brand Filter -->
     <div class="flex-fill" style="min-width: 200px;">
-        <label for="brand" class="form-label">Marca</label>
+        <label for="brand" class="form-label">Brand</label>
         <select id="brand" name="brand" class="form-select" onchange="applyFilters()">
-            <option value="">Selecione uma marca</option>
-            <option value="marca1">Marca 1</option>
-            <option value="marca2">Marca 2</option>
-            <option value="marca3">Marca 3</option>
+            <option value="">Select a brand</option>
+            <option value="marca1">Brand 1</option>
+            <option value="marca2">Brand 2</option>
+            <option value="marca3">Brand 3</option>
         </select>
     </div>
 
-    <!-- Filtro de Faixa de Preço -->
+    <!-- Price Range Filter -->
     <div class="flex-fill" style="min-width: 200px;">
-        <label for="priceRange" class="form-label">Faixa de Preço</label>
+        <label for="priceRange" class="form-label">Price Range</label>
         <select id="priceRange" name="priceRange" class="form-select" onchange="applyFilters()">
-            <option value="">Selecione uma faixa de preço</option>
-            <option value="0-50">R$ 0 - R$ 50</option>
-            <option value="51-100">R$ 51 - R$ 100</option>
-            <option value="101-200">R$ 101 - R$ 200</option>
-            <option value="200+">R$ 200+</option>
+            <option value="">Select a price range</option>
+            <option value="0-50">$ 0 - $ 50</option>
+            <option value="51-100">$ 51 - $ 100</option>
+            <option value="101-200">$ 101 - $ 200</option>
+            <option value="200+">$ 200+</option>
         </select>
     </div>
 </form>
+
 
 
 <div id="productList">
@@ -45,7 +46,7 @@
         const formData = $("#filterForm").serialize();
 
         $.ajax({
-            url: '/Home/Filtrar', // Rota para a Action que processa os filtros
+            url: '/Product/Filtrar', // Rota para a Action que processa os filtros
             type: 'GET',
             data: formData,
             success: function (result) {

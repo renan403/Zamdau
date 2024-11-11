@@ -1,9 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Cart";
 }
+<div class="container">
 
 
-<div class="container m-2">
+<div class="cart-container ">
+    
+<div class="">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
             <li class="breadcrumb-item">
@@ -16,7 +19,7 @@
                 </a>
             </li>
             <li class="breadcrumb-item ">
-                <a class="text-decoration-none  text-light">
+                <a class="text-decoration-none">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                         <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
                     </svg>
@@ -26,11 +29,12 @@
         </ol>
     </nav>
 </div>
+</div>
 @if (1 == 2)
 {
     <div class="container m-3">
         <div class="col">
-            <div class=" text-light shadow-sm">
+            <div class=" shadow-sm">
                 <div class="card-body text-center justify-content-between align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-duffle" viewBox="0 0 16 16">
                         <path d="M8 5.75c1.388 0 2.673.193 3.609.385a18 18 0 0 1 1.43.354l.112.034.002.001h.001a.5.5 0 0 1-.308.952l-.004-.002-.018-.005a17 17 0 0 0-1.417-.354A17.3 17.3 0 0 0 8 6.75a17.3 17.3 0 0 0-3.408.365 17 17 0 0 0-1.416.354l-.018.005-.003.001a.5.5 0 1 1-.308-.95A17.3 17.3 0 0 1 8 5.75" />
@@ -46,7 +50,7 @@
 }
 else
 {
-<div class="cart-container  text-light">
+<div class="cart-container  ">
     <h1 class="border border-rounded-10 p-3 text-center">Shopping Cart</h1>
     <div class="cart-items">
         <div class="cart-item">
@@ -88,7 +92,7 @@ else
             </div>
             <button class="remove-item">Remove</button>
         </div>
-        <div class="cart-summary text-light">
+        <div class="cart-summary">
             <h2>Order Summary</h2>
             <p class="subtotal">Subtotal: $49.98</p>
             <p class="tax">Tax: $4.99</p>
@@ -101,3 +105,4 @@ else
  
 }
 
+</div>

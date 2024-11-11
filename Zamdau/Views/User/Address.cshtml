@@ -1,155 +1,156 @@
 ﻿
-    <title>Address Form</title>
-   
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-        }
-            
-    </style>
+<title>Address Form</title>
 
-<div class="container m-2">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
-            <li class="breadcrumb-item">
-                <a class="  text-decoration-none link-orange" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                    </svg>
-                    Account
-                </a>
-            </li>
-            <li class="breadcrumb-item ">
-                <a class="text-decoration-none  text-light">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-globe-americas" viewBox="0 0 16 16">
-                        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z" />
-                    </svg>
-                    Address
-                </a>
-            </li>
-        </ol>
-    </nav>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+    }
+</style>
+
+<div class="cart-container ">
+    <div class="">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb p-3 bg-body-tertiary rounded-3">
+                <li class="breadcrumb-item">
+                    <a class="  text-decoration-none link-orange" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                        </svg>
+                        Account
+                    </a>
+                </li>
+                <li class="breadcrumb-item ">
+                    <a class="text-decoration-none  ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-globe-americas" viewBox="0 0 16 16">
+                            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z" />
+                        </svg>
+                        Address
+                    </a>
+                </li>
+            </ol>
+        </nav>
+    </div>
 </div>
 
-<div class="cart-container m-auto m-2 text-light">
+<div class="cart-container m-auto m-2 ">
 
-        <h2>Your Addresses</h2>
+    <h2>Your Addresses</h2>
 
-        <div class="address-list">
-            <h3 class="mb-4">Registered Addresses</h3>
-            <ul id="addressList" class="list-unstyled">
-                <!-- Endereço 1 -->
-                <li>
-                    <form class="address-form main" data-id="1">
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="street1" class="form-label">Street</label>
-                                <input type="text" id="street1" name="street1" class="form-control" value="123 Main St" disabled>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="neighborhood1" class="form-label">Neighborhood</label>
-                                <input type="text" id="neighborhood1" name="neighborhood1" class="form-control" value="Neighborhood" disabled>
-                            </div>
+    <div class="address-list">
+        <h3 class="mb-4">Registered Addresses</h3>
+        <ul id="addressList" class="list-unstyled">
+            <!-- Endereço 1 -->
+            <li>
+                <form class="address-form main" data-id="1">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="street1" class="form-label">Street</label>
+                            <input type="text" id="street1" name="street1" class="form-control" value="123 Main St" disabled>
                         </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-4">
-                                <label for="city1" class="form-label">City</label>
-                                <input type="text" id="city1" name="city1" class="form-control" value="City" disabled>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="state1" class="form-label">State</label>
-                                <input type="text" id="state1" name="state1" class="form-control" value="State" disabled>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="zip1" class="form-label">ZIP</label>
-                                <input type="text" id="zip1" name="zip1" class="form-control" value="00000-000" disabled>
-                            </div>
+                        <div class="col-md-6">
+                            <label for="neighborhood1" class="form-label">Neighborhood</label>
+                            <input type="text" id="neighborhood1" name="neighborhood1" class="form-control" value="Neighborhood" disabled>
                         </div>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="country1" class="form-label">Country</label>
-                            <input type="text" id="country1" name="country1" class="form-control" value="Country" disabled>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="city1" class="form-label">City</label>
+                            <input type="text" id="city1" name="city1" class="form-control" value="City" disabled>
                         </div>
+                        <div class="col-md-4">
+                            <label for="state1" class="form-label">State</label>
+                            <input type="text" id="state1" name="state1" class="form-control" value="State" disabled>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="zip1" class="form-label">ZIP</label>
+                            <input type="text" id="zip1" name="zip1" class="form-control" value="00000-000" disabled>
+                        </div>
+                    </div>
 
-                        <!-- Checkbox para indicar endereço principal -->
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="mainAddress1" name="mainAddress1" checked disabled>
-                            <label class="form-check-label" for="mainAddress1">
-                                Main Address
-                            </label>
-                        </div>
+                    <div class="mb-3">
+                        <label for="country1" class="form-label">Country</label>
+                        <input type="text" id="country1" name="country1" class="form-control" value="Country" disabled>
+                    </div>
 
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-outline-primary edit-button" type="button">Edit</button>
-                            <button class="btn btn-outline-success save-button" type="submit" style="display: none;">Save</button>
-                            <button class="btn btn-outline-danger cancel-button" type="button" style="display: none;">Cancel</button>
-                        </div>
-                    </form>
-                </li>
+                    <!-- Checkbox para indicar endereço principal -->
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="mainAddress1" name="mainAddress1" checked disabled>
+                        <label class="form-check-label" for="mainAddress1">
+                            Main Address
+                        </label>
+                    </div>
 
-                <!-- Endereço 2 -->
-                <li>
-                    <form class="address-form" data-id="2">
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label for="street2" class="form-label">Street</label>
-                                <input type="text" id="street2" name="street2" class="form-control" value="456 Market St" disabled>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="neighborhood2" class="form-label">Neighborhood</label>
-                                <input type="text" id="neighborhood2" name="neighborhood2" class="form-control" value="Market Neighborhood" disabled>
-                            </div>
-                        </div>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-primary edit-button" type="button">Edit</button>
+                        <button class="btn btn-outline-success save-button" type="submit" style="display: none;">Save</button>
+                        <button class="btn btn-outline-danger cancel-button" type="button" style="display: none;">Cancel</button>
+                    </div>
+                </form>
+            </li>
 
-                        <div class="row mb-3">
-                            <div class="col-md-4">
-                                <label for="city2" class="form-label">City</label>
-                                <input type="text" id="city2" name="city2" class="form-control" value="City" disabled>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="state2" class="form-label">State</label>
-                                <input type="text" id="state2" name="state2" class="form-control" value="State" disabled>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="zip2" class="form-label">ZIP</label>
-                                <input type="text" id="zip2" name="zip2" class="form-control" value="11111-111" disabled>
-                            </div>
+            <!-- Endereço 2 -->
+            <li>
+                <form class="address-form" data-id="2">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="street2" class="form-label">Street</label>
+                            <input type="text" id="street2" name="street2" class="form-control" value="456 Market St" disabled>
                         </div>
+                        <div class="col-md-6">
+                            <label for="neighborhood2" class="form-label">Neighborhood</label>
+                            <input type="text" id="neighborhood2" name="neighborhood2" class="form-control" value="Market Neighborhood" disabled>
+                        </div>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="country2" class="form-label">Country</label>
-                            <input type="text" id="country2" name="country2" class="form-control" value="Country" disabled>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="city2" class="form-label">City</label>
+                            <input type="text" id="city2" name="city2" class="form-control" value="City" disabled>
                         </div>
+                        <div class="col-md-4">
+                            <label for="state2" class="form-label">State</label>
+                            <input type="text" id="state2" name="state2" class="form-control" value="State" disabled>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="zip2" class="form-label">ZIP</label>
+                            <input type="text" id="zip2" name="zip2" class="form-control" value="11111-111" disabled>
+                        </div>
+                    </div>
 
-                        <!-- Checkbox para indicar endereço principal -->
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="mainAddress2" name="mainAddress2">
-                            <label class="form-check-label" for="mainAddress2">
-                                Set as main address
-                            </label>
-                        </div>
+                    <div class="mb-3">
+                        <label for="country2" class="form-label">Country</label>
+                        <input type="text" id="country2" name="country2" class="form-control" value="Country" disabled>
+                    </div>
 
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-outline-primary edit-button" type="button">Edit</button>
-                            <button class="btn btn-outline-success save-button" type="submit" style="display: none;">Save</button>
-                            <button class="btn btn-outline-danger cancel-button" type="button" style="display: none;">Cancel</button>
-                        </div>
-                    </form>
-                </li>
-            </ul>
-        </div>
+                    <!-- Checkbox para indicar endereço principal -->
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="mainAddress2" name="mainAddress2">
+                        <label class="form-check-label" for="mainAddress2">
+                            Set as main address
+                        </label>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-primary edit-button" type="button">Edit</button>
+                        <button class="btn btn-outline-success save-button" type="submit" style="display: none;">Save</button>
+                        <button class="btn btn-outline-danger cancel-button" type="button" style="display: none;">Cancel</button>
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
 
     <button id="addAddressButton" class="btn-address  w-100">Add New Address</button>
-    </div>
+</div>
 
 
 
 
 <script>
     document.querySelectorAll('.edit-button').forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const form = this.closest('.address-form');
             const inputs = form.querySelectorAll('input');
             const saveButton = form.querySelector('.save-button');
@@ -166,7 +167,7 @@
     });
 
     document.querySelectorAll('.cancel-button').forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const form = this.closest('.address-form');
             const inputs = form.querySelectorAll('input');
             const editButton = form.querySelector('.edit-button');
@@ -186,7 +187,7 @@
     });
 
     document.querySelectorAll('.save-button').forEach(button => {
-        button.addEventListener('click', function(event) {
+        button.addEventListener('click', function (event) {
             event.preventDefault();
             const form = this.closest('.address-form');
             const inputs = form.querySelectorAll('input');

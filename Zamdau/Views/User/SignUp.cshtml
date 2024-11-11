@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Sign Up";
 }
-<div class="form-signin m-auto w-100 d-flex align-items-center justify-content-center text-light"  style="min-height: 70vh;">
+<div class="form-signin m-auto w-100 d-flex align-items-center justify-content-center "  style="min-height: 70vh;">
     <div class="w-100" style="max-width: 330px;">
         @using (Html.BeginForm("SignUp", "User", FormMethod.Post, new { @id = "dynamic-form"  , @onsubmit = "return validateForm()" }))
         {
