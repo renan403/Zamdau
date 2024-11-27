@@ -1,0 +1,104 @@
+﻿@model Account
+@{
+    ViewBag.Title = "Account";
+}
+<div class="container">
+<div class="container mt-5">
+
+    <div class="card-container">
+        <div class="col-md-4">
+            <div class="card card-custom">
+                <div class="card-header-custom">
+                    <span class="icon-main">&#128100;</span>
+                </div>
+                <div class="card-body-custom">
+                    <h5 class="card-title-custom">My Account</h5>
+                    <p>Manage your personal information, orders, and account settings.</p>
+
+                </div>
+                <div class="card-footer align-text-center bg-dark">
+                    <a asp-action="MyAccount" asp-controller="User" class="btn btn-outline-orange btn-sm">Access</a>
+
+                </div>
+            </div>
+        </div>
+            @if (!Model.IsSeller)
+            {
+
+                <div class="col-md-4">
+                    <div class="card card-custom">
+                        <div class="card-header-custom">
+                            <span class="icon-main">&#128187;</span>
+                        </div>
+                        <div class="card-body-custom">
+                            <h5 class="card-title-custom">Want to Be a Seller?</h5>
+                            <p>Learn how to sell your products and become a seller on our marketplace.</p>
+
+                        </div>
+                        <div class="card-footer align-text-center bg-dark">
+                            <a asp-action="BeSeller" asp-controller="Seller" class="btn btn-outline-orange btn-sm">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+            }
+            else
+            {
+                <div class="col-md-4">
+                    <div class="card card-custom">
+                        <div class="card-header-custom">
+                            <span class="icon-main">&#128187;</span>
+                        </div>
+                        <div class="card-body-custom">
+                            <h5 class="card-title-custom">Seller Profile</h5>
+                            <p>Complete your seller profile to start listing and selling your products on our marketplace.</p>
+
+                        </div>
+                        <div class="card-footer align-text-center bg-dark">
+                            <a asp-action="SellerProfile" asp-controller="Seller" class="btn btn-outline-orange btn-sm">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            }
+            
+
+        <div class="col-md-4">
+            <div class="card card-custom">
+                <div class="card-header-custom">
+                    <span class="icon-main">&#128176;</span>
+                </div>
+                <div class="card-body-custom">
+                    <h5 class="card-title-custom">My Orders</h5>
+                    <p>View the status and history of your orders placed in the marketplace.</p>
+
+                </div>
+                <div class="card-footer align-text-center bg-dark">
+                    <a asp-action="Orders" asp-controller="Product" class="btn btn-outline-orange btn-sm">View Orders</a>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card card-custom">
+                <div class="card-header-custom">
+                    <span class="icon-main">&#128200;</span>
+                </div>
+                <div class="card-body-custom">
+                    <h5 class="card-title-custom">Products</h5>
+                    <p>Explore the products available for purchase in the marketplace.</p>
+
+                </div>
+                <div class="card-footer align-text-center bg-dark">
+                    <a asp-action="Products" asp-controller="Product" class="btn btn-outline-orange btn-sm">Explore Products</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+

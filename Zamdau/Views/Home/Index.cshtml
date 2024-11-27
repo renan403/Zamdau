@@ -3,16 +3,13 @@
 @{
     ViewBag.Title = "Products";
 }
-<div class="container">
+<div class="container ">
     <div>
 
     <div class="container rounded border-rounded-20 d-flex flex-column ">
             <img src="~/images/Products/Designer (33).jpeg" class="img-fluid  " />
             <a asp-action="Products" asp-controller="Product" class="btn btn-sm btn-outline-orange mt-2 btn-lg">Go shopping</a>
         </div>
-
-
-
 
     </div>
 
@@ -22,7 +19,7 @@
             @foreach (var produto in Model)
             {
                 <div class="col-md-3">
-                    <div class="card mb-4 bg-opacity-75 bg-dark">
+                    <div class="card mb-4 bg-opacity-75 text-light bg-dark">
                         <img src="@produto.ImageUrl" class="card-img-top bg-black" alt="@produto.Name">
                         <div class="card-body">
                             <h5 class="card-title ">@produto.Name</h5>

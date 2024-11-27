@@ -5,15 +5,16 @@
     <div class="row mt-4">
         @foreach (var produto in Model)
         {    
-            <div class="col-md-3 ">
+            <div class="col-md-3 text-light ">
                 <div class="card mb-4 bg-opacity-75 bg-dark">
-                    <a>
+
+                    <a asp-action="ViewProduct" asp-controller="Product" asp-route-id="@produto.Id">
                         <img src="@produto.ImageUrl" class="card-img-top bg-black" alt="@produto.Name">
                     </a>                
-                    <div class="card-body">
+                    <div class="card-body text-light">
                         <h5 class="card-title ">@produto.Name</h5>
                         <p class="card-text  text-truncate mw-100">@produto.Description</p>
-                        @Html.ActionLink($"{@produto.Price}", "ViewProduct", "Product", new { id = @produto.Id }, new { @class = " btn-custom btn-orange" })
+                        @Html.ActionLink($"{@produto.Price.ToString("C")}", "ViewProduct", "Product", new { id = @produto.Id }, new { @class = " btn-custom btn-orange" })
                     </div>
                 </div>
             </div>

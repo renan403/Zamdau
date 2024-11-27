@@ -1,4 +1,5 @@
-﻿/*
+﻿
+/*
 document.addEventListener('DOMContentLoaded', (event) => {
     const themeToggleButton = document.getElementById('bd-theme');
     const themeIcon = document.querySelector('.theme-icon-active');

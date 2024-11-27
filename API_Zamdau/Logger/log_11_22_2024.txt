@@ -1,0 +1,18 @@
+21:23:53 : Exception occured while authenticating.
+Url: https://www.googleapis.com/identitytoolkit/v3/relyingparty/deleteAccount?key={0}
+Request Data: {"idToken":""}
+Response: {
+  "error": {
+    "code": 400,
+    "message": "INVALID_ID_TOKEN",
+    "errors": [
+      {
+        "message": "INVALID_ID_TOKEN",
+        "domain": "global",
+        "reason": "invalid"
+      }
+    ]
+  }
+}
+
+Reason: InvalidIDToken

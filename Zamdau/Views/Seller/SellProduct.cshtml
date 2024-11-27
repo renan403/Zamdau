@@ -1,0 +1,120 @@
+﻿@model Zamdau.Models.Product
+
+<div class="container mt-5">
+    <div class="container mt-5">
+        <h2>New Product Listing</h2>
+        <form asp-action="CreateProduct" asp-controller="Product" method="post" enctype="multipart/form-data">
+            <!-- Name -->
+            <div class="mb-3">
+                <label for="Name" class="form-label">Product Name</label>
+                <input type="text" class="form-control" id="Name" name="Name" required autocomplete="off" placeholder="Enter product name">
+            </div>
+
+            <!-- Brand, Price, and Quantity in the same row -->
+            <div class="row g-3 mb-3">
+                <!-- Brand -->
+                <div class="col-md-4">
+                    <label for="Brand" class="form-label">Brand</label>
+                    <input type="text" class="form-control" id="Brand" name="Brand" placeholder="Enter brand (optional)">
+                </div>
+                <!-- Price -->
+                <div class="col-md-4">
+                    <label for="Price" class="form-label">Price ($)</label>
+                    <input type="text"
+                           class="form-control"
+                           id="Price"
+                           name="Price"
+                           autocomplete="off"
+                           placeholder="Enter price (e.g., 1,999.99)"
+                           onchange="MascaraMoeda(this)"
+                           onkeypress="return event.charCode >= 48 && event.charCode <= 57,MascaraMoeda(this)">
+
+                </div>
+                <!-- Quantity -->
+                <div class="col-md-4">
+                    <label for="Quantity" class="form-label">Quantity</label>
+                    <input type="number" class="form-control" id="Quantity" name="Quantity" required placeholder="Enter available quantity">
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+                <label for="Description" class="form-label">Description</label>
+                <textarea class="form-control" id="Description" name="Description" rows="3" placeholder="Provide a detailed description (optional)"></textarea>
+            </div>
+
+            <!-- Image Upload -->
+            <div class="mb-3">
+                <label for="ImageUrl" class="form-label">Product Image</label>
+                <input type="file" class="form-control" id="ImageUrl" name="ImageUrl" accept="image/*">
+            </div>
+
+            <!-- Specifications -->
+            <div class="mb-3">
+                <label class="form-label">Specifications</label>
+                <div id="specifications-container">
+                    <div class="row g-2 mb-2">
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="Specifications[0].Name" placeholder="Specification name (e.g., Size)" />
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" name="Specifications[0].Value" placeholder="Specification value (e.g., Medium)" />
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-danger remove-specification">Remove</button>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" id="add-specification" class="btn btn-sm btn-secondary">Add Specification</button>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-orange">Submit Product</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    function MascaraMoeda(i) {
+        var v = i.value.replace(/\D/g, '');
+        v = (v / 100).toFixed(2) + '';
+        v = v.replace(".", ",");
+        v = v.replace(/(\d)(\d{3})(\d{3}),/g, "$1.$2.$3,");
+        v = v.replace(/(\d)(\d{3}),/g, "$1.$2,");
+        i.value = v;
+    }
+</script>
+
+@section Scripts {
+    <script>
+        let specCount = 1;
+
+        document.getElementById('add-specification').addEventListener('click', function () {
+            const container = document.getElementById('specifications-container');
+            const row = document.createElement('div');
+            row.classList.add('row', 'g-2', 'mb-2');
+            row.innerHTML = `
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control" name="Specifications[${specCount}].Name" placeholder="Specification name" />
+                                        </div>
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control" name="Specifications[${specCount}].Value" placeholder="Specification value" />
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-danger remove-specification">Remove</button>
+                                        </div>
+                                    `;
+            container.appendChild(row);
+            specCount++;
+        });
+
+        document.getElementById('specifications-container').addEventListener('click', function (e) {
+            if (e.target.classList.contains('remove-specification')) {
+                e.target.closest('.row').remove();
+            }
+        });
+
+
+    </script>
+}

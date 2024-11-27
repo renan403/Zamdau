@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\User\MoreServicescshtml.cshtml" />
     <Content Remove="wwwroot\js\JSCart.js" />
     <Content Remove="wwwroot\js\JSTest.js" />
   </ItemGroup>
@@ -14,6 +15,9 @@
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\Home\HelpCenter.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Home\Products.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Seller\SellProduct.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\User\SellerProfile.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\User\MoreServicescshtml.cshtml" />
     <_ContentIncludedByDefault Remove="wwwroot\css\testes.css" />
     <_ContentIncludedByDefault Remove="wwwroot\js\JSCart.js" />
     <_ContentIncludedByDefault Remove="wwwroot\js\JSTest.js" />
@@ -21,7 +25,8 @@
 
   <ItemGroup>
     <None Include="Views\User\AddAddress.cshtml" />
-    <None Include="Views\User\PasswordReset.cshtml" />
+    <None Include="Views\Buyer\MoreServicescshtml.cshtml" />
+    <None Include="Views\Buyer\PasswordReset.cshtml" />
     <None Include="wwwroot\js\JSCart.js" />
     <None Include="wwwroot\js\JSTest.js" />
   </ItemGroup>
@@ -40,6 +45,18 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\Home\Products.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\User\MoreServicescshtml.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\User\SellerProfile.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Seller\SellProduct.cshtml" />
   </ItemGroup>
 
 </Project>

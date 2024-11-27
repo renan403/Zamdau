@@ -13,9 +13,11 @@
         <label for="brand" class="form-label">Brand</label>
         <select id="brand" name="brand" class="form-select" onchange="applyFilters()">
             <option value="">Select a brand</option>
-            <option value="marca1">Brand 1</option>
-            <option value="marca2">Brand 2</option>
-            <option value="marca3">Brand 3</option>
+            @foreach (var i in ViewBag.Brands)
+            {
+                <option value="@i">@i</option>
+            }
+            
         </select>
     </div>
 

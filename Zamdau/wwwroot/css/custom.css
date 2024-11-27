@@ -8,7 +8,163 @@
     --color-light-gray: #9a9a9a;
     --color-light-orange: rgba(255, 153, 0, 0.01);
 }
+
+
+.bg-orange{
+    background-color:darkorange;   
+}
+.bg-orange:hover {
+    background-color: orangered;
+}
 /*------------------------------------------------------------------------------------------------------------------------------------------------*/
+.badge-success {
+    background-color: #28a745; /* Concluído ou entregue */
+    color: white;
+}
+
+.badge-warning {
+    background-color: #ffc107; /* Em processamento */
+    color: black;
+}
+
+.badge-danger {
+    background-color: #dc3545; /* Cancelado ou falha */
+    color: white;
+}
+
+.badge-info {
+    background-color: #17a2b8; /* Enviado */
+    color: white;
+}
+
+.badge-grey {
+    background-color: #d6d8db; /* Pendente */
+    color: black;
+}
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+.card-custom {
+    transition: transform 0.3s ease-in-out;
+}
+
+    .card-custom:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+.card-header-custom {
+    background-color: rgba(255, 167, 0, 1);
+    text-align: center;
+}
+
+.card-body-custom {
+    padding: 20px;
+    text-align: center;
+    height: 150px
+}
+
+.icon-main {
+    font-size: 50px;
+}
+
+.card-title-custom {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+    .card-container .col-md-4 {
+        flex: 1 1 200px;
+    }
+/*------------------------------------------------------------------------------------------------------------------------------------------------*/
+.hero-section1 {
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+    .hero-section1 h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    .hero-section1 p {
+        font-size: 1.2rem;
+    }
+
+.info-section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+    .info-section h2 {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .info-section p {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+
+.benefits-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.benefit-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+    .benefit-card:hover {
+        transform: translateY(-5px);
+    }
+
+.benefit-icon {
+    font-size: 40px;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.btn-register {
+    margin-top: 30px;
+    color: white;
+    font-size: 1.1rem;
+    padding: 10px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+    .btn-register:hover {
+        color: white;
+    }
+
+
+/*------------------------------------------------------------------------------------------------------------------------------------------------*/
+.align-text-center {
+    text-align: center;
+}
+
+
 .hero {
     background: url('../images/Products/Designer (33).jpeg') no-repeat center center;
     background-size: cover;

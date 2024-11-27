@@ -1,0 +1,36 @@
+20:36:04 : Exception occured while authenticating.
+Url: https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key={0}
+Request Data: {"email":"renancporto94@gmail.com","password":"","returnSecureToken":true}
+Response: {
+  "error": {
+    "code": 400,
+    "message": "MISSING_PASSWORD",
+    "errors": [
+      {
+        "message": "MISSING_PASSWORD",
+        "domain": "global",
+        "reason": "invalid"
+      }
+    ]
+  }
+}
+
+Reason: MissingPassword
+20:56:53 : Exception occured while authenticating.
+Url: https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key={0}
+Request Data: {"email":"renancporto94@gmail.com","password":"51Uj2l8Pay8onHnVj12akQ==","returnSecureToken":true}
+Response: {
+  "error": {
+    "code": 400,
+    "message": "EMAIL_EXISTS",
+    "errors": [
+      {
+        "message": "EMAIL_EXISTS",
+        "domain": "global",
+        "reason": "invalid"
+      }
+    ]
+  }
+}
+
+Reason: EmailExists

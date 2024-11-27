@@ -1,5 +1,6 @@
 ﻿using API_Zamdau.Logger;
 using API_Zamdau.User;
+using Newtonsoft.Json;
 
 namespace API_Zamdau.DataBase
 {
@@ -35,25 +36,21 @@ namespace API_Zamdau.DataBase
                 return new AP_Auth(GetErrors(ex.Message));
             }
         }
-        public async Task<AP_Auth> CreateEmail(string email, string pwd, string name)
+        public async Task<string> CreateEmail(string user)
         {
             try
             {
-                var create = await _authProvider.CreateUserWithEmailAndPasswordAsync(email, pwd, sendVerificationEmail: true);
+                var userConvert = JsonConvert.DeserializeObject<AP_User>(user);
+                var create = await _authProvider.CreateUserWithEmailAndPasswordAsync(userConvert.Email, userConvert.Pwd, sendVerificationEmail: true);
 
-                await _userZamdau.RegisterUserDb(create.FirebaseToken, new AP_User()
-                {
-                    Email = email,
-                    Name = name,
-                    CreatedAt = create.Created
-                });
+                await _userZamdau.RegisterUserDb(create.FirebaseToken, userConvert);
 
-                return new AP_Auth() { TokenID = create.FirebaseToken };
+                return  create.FirebaseToken;
             }
             catch (Exception ex)
             {
                 Log.SaveLog(ex.Message);
-                return new AP_Auth(GetErrors(ex.Message));
+                return GetErrors(ex.Message);
             }
         }
         public async Task<bool> ReSendVerificationEmail(string tokenClient)

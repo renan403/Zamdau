@@ -6,9 +6,36 @@
 
 <div class="container">
 
+    <div class="">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb p-3 rounded-3">
+                <li class="breadcrumb-item">
+                    <a asp-action="Index" asp-controller="Home"  class="text-decoration-none link-orange">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+                        </svg>
+                        Home
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a asp-action="Products" asp-controller="Product" class="text-decoration-none link-orange ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                        </svg>
+                        Products
+                    </a>
+                </li>
+                <li class="breadcrumb-item ">
+                    <a class="text-decoration-none link-light ">
+                        
+                        @Model.Name
+                    </a>
+                </li>
+            </ol>
+        </nav>
+    </div>
 
-
-<div class="product-container m-auto my-5 m-3 ">
+<div class="product-container  m-auto my-5 m-3 ">
     <div class="row">
         <!-- Product Image -->
         <div class="col-md-6 bg-opacity-25  rounded mt-1">
@@ -35,49 +62,61 @@
             }
 
             <!-- Manufacturer, Type, and Availability -->
-            <ul class="list-group list-group-flush mb-3">
-                <li class="list-group-item bg-dark ">
-                    <strong>Manufacturer:</strong> Manufacturer
+                <ul class="list-group list-group-flush text-light mb-3">
+                    <li class="list-group-item text-light bg-dark">
+                        <strong>Manufacturer :</strong> teste
                 </li>
-                <li class="list-group-item bg-dark ">
-                    <strong>Type:</strong> Type
+                    <li class="list-group-item text-light bg-dark ">
+                        <strong>Type :</strong> teste
                 </li>
-                <li class="list-group-item bg-dark ">
-                    <strong>Availability:</strong> Availability
+                    <li class="list-group-item text-light bg-dark ">
+                        <strong>Availability :</strong> teste
                 </li>
-                <li class="list-group-item bg-dark ">
-                    <strong>Quantity:</strong>
-                    <select class="form-select d-inline-block w-auto bg-dark  border-light" style="width: 70px;" id="quantitySelect">
-                        <option value="0" selected>Select</option>
+                    <li class="list-group-item bg-dark text-light">
+                    <strong class="me-1">Quantity :</strong>
+                        <select class="form-select-sm d-inline-block w-auto bg-dark text-light border-light" style="width: 70px;" id="quantitySelect">
+                        <option value="0" selected>Select </option>
                         @for (int i = 1; i <= (Model.Quantity > 5 ? 5 : Model.Quantity); i++)
                         {
                             <option value="@i">@i</option>
                         }
                     </select>
                 </li>
-                <li class="list-group-item bg-dark ">
-                    <strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.0 out of 5)
+                    <li class="list-group-item text-light bg-dark text-light">
+                    <strong>Rating:</strong> ⭐⭐⭐⭐☆ (4 out of 5)
                 </li>
             </ul>
 
             <!-- Technical Specifications -->
-            <div class="mb-3">
+                <div class="mb-3 text-light">
                 <h4>Technical Specifications</h4>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item bg-dark ">
-                        <strong>Material:</strong> Material
+                @*<ul class="list-group list-group-flush ">
+                        <li class="list-group-item bg-dark text-light">
+                            <strong>Material :</strong> teste
                     </li>
-                    <li class="list-group-item bg-dark ">
-                        <strong>Dimensions:</strong> Dimensions
+                        <li class="list-group-item  bg-dark text-light">
+                        <strong>Dimensions :</strong> teste
                     </li>
-                    <li class="list-group-item bg-dark ">
-                        <strong>Weight:</strong> Weight
+                        <li class="list-group-item bg-dark text-light">
+                            <strong>Weight :</strong> teste
                     </li>
-                    <li class="list-group-item bg-dark ">
-                        <strong>Color:</strong> Color
+                        <li class="list-group-item bg-dark text-light">
+                            <strong>Color :</strong> teste
                     </li>
-                </ul>
+                    </ul>*@
+                    
+                        <ul class="list-group list-group-flush">
+                            @foreach (var spec in Model.Specifications)
+                            {
+                                <li class="list-group-item bg-dark text-light">
+                                    <strong>@spec.Name :</strong> @spec.Value
+                                </li>
+                            }
+                        </ul>
+                    
+
             </div>
+
 
             <!-- Description -->
             <div class="my-3">
@@ -98,12 +137,12 @@
             <h4>Customer Reviews</h4>
             <div class="list-group">
                 <!-- Example Reviews -->
-                <div class="list-group-item bg-dark  border-light">
+                    <div class="list-group-item bg-dark text-light border-light">
                     <h5 class="mb-1">User 1</h5>
                     <p>⭐⭐⭐⭐⭐ - Excellent product! It met all my expectations.</p>
                     <small class="text-secondary">Review date: 10/01/2024</small>
                 </div>
-                <div class="list-group-item bg-dark  border-light">
+                    <div class="list-group-item bg-dark text-light border-light">
                     <h5 class="mb-1">User 2</h5>
                     <p>⭐⭐⭐☆☆ - Good product, but could have better quality in the details.</p>
                     <small class="text-secondary">Review date: 09/25/2024</small>

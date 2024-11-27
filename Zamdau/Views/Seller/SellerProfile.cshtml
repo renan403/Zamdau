@@ -1,0 +1,96 @@
+﻿@model Zamdau.Models.Seller
+@{
+    ViewData["Title"] = "Seller profile";
+}
+<div class="container mt-4">
+    <div class="">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb p-3 rounded-3">
+                <li class="breadcrumb-item">
+                    <a asp-action="Account" asp-controller="User" class="text-decoration-none link-orange">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+                        </svg>
+                        Account
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a asp-action="SellerProfile" asp-controller="Seller" class="text-decoration-none link-orange ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                        </svg>
+                        Seller Profile
+                    </a>
+                </li>
+                
+            </ol>
+        </nav>
+    </div>
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header bg-orange">
+                <h2> @Model.Name</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <img src="@(string.IsNullOrEmpty(Model.ProfilePictureUrl) ? Url.Content("~/images/Profile/Seller/imgNoPhoto.png") : Model.ProfilePictureUrl)"
+                             alt="Seller Picture"
+                             class="img-fluid rounded-circle mb-3"
+                             style="max-width: 200px;">
+                    </div>
+                    <div class="col-md-8">
+                        <h5 class="card-title">About the Seller</h5>
+                        <p class="card-text">@Model.Description</p>
+                        <hr />
+                        <h6>Contact Information:</h6>
+                        <p><strong>Email:</strong> @Model.Email</p>
+                        <p><strong>Phone:</strong> @Model.Phone</p>
+
+                        <!-- Botão para editar informações de contato -->
+                        @if (@Model.OwnerUsername)
+                        {
+                            <a asp-action="UpdateProfile" asp-controller="Seller" class="btn btn-sm btn-outline-orange">Edit Profile</a>
+                        }
+                    </div>
+                </div>
+                <hr />
+                <h5>Products by @Model.Name</h5>
+                <div class="row">
+                    @if (Model.Products is not null){
+                    @foreach (var product in Model.Products)
+                    {
+                        <div class="col-md-3 mb-3">
+                            <div class="card h-100">
+                                <img src="@product.ImageUrl" class="card-img-top img-fluid" alt="@product.Name">
+                                <div class="card-body">
+                                    <h6 class="card-title">@product.Name</h6>
+                                    <p class="card-text text-muted">@product.Price.ToString("C")</p>
+                                    <a href="/Product/ViewProduct/@product.Id" class="btn btn-sm btn-orange">View Details</a>
+
+                                    <!-- Botões para editar e excluir produto -->
+                                    @if (@Model.OwnerUsername)
+                                    {
+                                        <div class="mt-2">
+                                            <a href="/product/edit/@product.Id" class="btn btn-sm btn-outline-orange">Edit</a>
+                                            <a href="/product/delete/@product.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        }
+                        }
+                </div>
+
+                <!-- Botão para adicionar produto -->
+                @if (@Model.OwnerUsername)
+                {
+                    <div class="text-center mt-4">
+                        <a asp-action="SellProduct" asp-controller="Seller" class="btn btn-orange">Add New Product</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
