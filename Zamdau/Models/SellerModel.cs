@@ -30,4 +30,8 @@ namespace Zamdau.Models
         public string Phone { get; set; }
         public string ProfilePictureUrl { get; set; }
     }
+    public class UpdateSeller : RegisterSeller
+    {
+        public IFormFile ProfilePicture { get; set; }
+    }
 }

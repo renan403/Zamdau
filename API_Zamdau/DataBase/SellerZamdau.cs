@@ -1,6 +1,7 @@
 ﻿using API_Zamdau.User;
 using Firebase.Auth;
 using Firebase.Database.Query;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System.Globalization;
 
@@ -26,6 +27,40 @@ namespace API_Zamdau.DataBase
                 return false;
             } 
         }
+        public async Task<bool> UpdateSellerAsync(string id, string seller, IFormFile ProfilePicture)
+        {
+            try
+            {
+                var _tokenClientId = Helpers.Helpers.Decrypt(id);
+                
+                var newData = JsonConvert.DeserializeObject<AP_UpdateSeller>(seller);
+
+                newData.ProfilePicture = ProfilePicture;
+
+
+                var existingData = JsonConvert.DeserializeObject<AP_UpdateSeller>(await GetSellerAsync(_tokenClientId));
+
+               var emailID = await GetEmailID(_tokenClientId);
+               
+               var updatedUser = new AP_UpdateSeller
+               {
+                   Description = newData.Description ?? existingData.Description,
+                   Name = newData.Name ?? existingData.Name,
+                   Email = newData.Email ?? existingData.Email,
+                   Phone = newData.Phone ?? existingData.Phone,
+                   ProfilePictureUrl = newData.ProfilePictureUrl ?? existingData.ProfilePictureUrl,
+               };
+               
+               
+               await _client.Child("users").Child(emailID).Child("Seller").PatchAsync(updatedUser);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public async Task<string> GetSellerAsync(string id)
         {
             try

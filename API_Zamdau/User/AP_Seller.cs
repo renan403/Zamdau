@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -33,5 +34,9 @@ namespace API_Zamdau.User
         public string Email { get; set; }
         public string Phone { get; set; }
         public string ProfilePictureUrl { get; set; }
+    }
+    public class AP_UpdateSeller : AP_RegisterSeller
+    {
+        public IFormFile ProfilePicture { get; set; }
     }
 }

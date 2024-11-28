@@ -93,28 +93,14 @@ namespace Zamdau.Controllers
 
         }
         [HttpPost]
-        public IActionResult UpdateProfile(Seller model, IFormFile ProfilePicture)
+        public async Task<IActionResult> UpdateProfile(UpdateSeller model, IFormFile ProfilePicture)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
+                model.teste = ProfilePicture;
+                var seller = await _seller.UpdateSellerAsync(User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value, model,ProfilePicture );
                 return View(model);
             }
-
-            // Atualize a imagem do perfil se for enviada
-            if (ProfilePicture != null)
-            {
-                var filePath = Path.Combine("wwwroot/uploads", ProfilePicture.FileName);
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    ProfilePicture.CopyTo(stream);
-                }
-                model.ProfilePictureUrl = "/uploads/" + ProfilePicture.FileName;
-            }
-
-            // Atualize as demais informações no banco de dados
-            //_dbContext.Sellers.Update(model);
-            //_dbContext.SaveChanges();
-
             return RedirectToAction("Profile", new { id = "model.Id" });
         }
 

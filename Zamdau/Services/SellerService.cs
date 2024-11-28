@@ -10,7 +10,7 @@ namespace Zamdau.Services
 {
     public class SellerService : ISellerService
     {
-        SellerZamdau _SellerZamdau;
+        private readonly SellerZamdau _SellerZamdau;
 
         public SellerService()
         {
@@ -18,11 +18,11 @@ namespace Zamdau.Services
         }
 
         public async Task<bool> SaveSellerAsync(string id, RegisterSeller seller) => (await _SellerZamdau.SaveSellerAsync(Helpers.Encrypt(id), JsonConvert.SerializeObject(seller)));
+        public async Task<bool> UpdateSellerAsync(string id, UpdateSeller seller, IFormFile ProfilePicture) => (await _SellerZamdau.UpdateSellerAsync(Helpers.Encrypt(id), JsonConvert.SerializeObject(seller), ProfilePicture));       
+        public async Task<Seller> GetSellerAsync(string id) => (JsonConvert.DeserializeObject<Seller>(await _SellerZamdau.GetSellerAsync(Helpers.Encrypt(id))) ?? new Seller());
            
-        public async Task<Seller> GetSellerAsync(string id) {
-            return JsonConvert.DeserializeObject<Seller>(await _SellerZamdau.GetSellerAsync(Helpers.Encrypt(id)));
-           
-        } 
+        
+
 
     }
 }
