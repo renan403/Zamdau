@@ -1,0 +1,176 @@
+﻿@model GetCheckoutDetails
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-12">
+            <h2 class="text-center mb-5">Checkout</h2>
+
+            <form asp-action="ProcessPayment" asp-controller="Payment" method="post">
+                <div class="row g-4">
+
+                    <!-- Customer Details -->
+                    <div class="col-lg-6">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-orange ">
+                                <h5 class="mb-0">Customer Details</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-2">
+                                    <label for="name" class="form-label fw-bolder">Full Name</label>
+                                    <input type="text" class="form-control border-none text-capitalize" id="name" name="CustomerName" value="@Model.Details.CustomerName" readonly>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="email" class="form-label fw-bolder">Email</label>
+                                    <input type="email" class="form-control border-none" id="email" name="CustomerEmail" value="@Model.Details.CustomerEmail" readonly>
+                                </div>
+                                <div class="mb-1">
+
+                                    <h5 class="mb-3">Recipient Address</h5>
+
+                                    <table class="table ">
+                                        <thead>
+                                            <tr>
+                                                <th>Recipient</th>
+                                                <td>@Model.Details.CustomerAddress.Recipient</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>Country</th>
+                                                <td>@Model.Details.CustomerAddress.Country</td>
+                                            </tr>
+                                            <tr>
+                                                <th>ZIP/Postcode</th>
+                                                <td>@Model.Details.CustomerAddress.Zip</td>
+                                            </tr>
+                                            <tr>
+                                                <th>State/Province</th>
+                                                <td>@Model.Details.CustomerAddress.State</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Street</th>
+                                                <td>@Model.Details.CustomerAddress.Street</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order Summary -->
+                    <div class="col-lg-6">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-orange">
+                                <h5 class="mb-0">Order Summary</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    @foreach (var item in Model.Details.CartItems)
+                                    {
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <a asp-action="ViewProduct" asp-controller="Product" asp-route-productId="@item.ProductId" class="text-decoration-none">
+                                                    <strong>@item.ProductName</strong>
+                                                </a>
+                                                <div class="small text-muted">Quantity: @item.Quantity</div>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <span class="fw-bold me-3">$@item.Price.ToString("F2")</span>
+                                                <a asp-action="RemoveFromCheckout" asp-controller="Payment" asp-route-itemId="@item.ProductId" class="btn btn-danger btn-sm">
+                                                    Remove
+                                                </a>
+                                            </div>
+                                        </li>
+                                    }
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Subtotal</span>
+                                        <span class="fw-bold">$@Model.Details.Subtotal.ToString("F2")</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Taxes</span>
+                                        <span class="fw-bold">$@Model.Details.Tax.ToString("F2")</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between bg-light">
+                                        <strong>Total</strong>
+                                        <strong class="text-primary">$@Model.Details.Total.ToString("F2")</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Methods -->
+                    <div class="col-12">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-orange">
+                                <h5 class="mb-0">Payment Method</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="PaymentMethod.SelectedPaymentMethod" id="creditCard" value="CreditCard">
+                                            <label class="form-check-label" for="creditCard">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+                                                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
+                                                    <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+                                                </svg> Credit Card
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="PaymentMethod.SelectedPaymentMethod" id="pix" value="Pix">
+                                            <label class="form-check-label" for="pix">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-qr-code" viewBox="0 0 16 16">
+                                                    <path d="M2 2h2v2H2z" />
+                                                    <path d="M6 0v6H0V0zM5 1H1v4h4zM4 12H2v2h2z" />
+                                                    <path d="M6 10v6H0v-6zm-5 1v4h4v-4zm11-9h2v2h-2z" />
+                                                    <path d="M10 0v6h6V0zm5 1v4h-4V1zM8 1V0h1v2H8v2H7V1zm0 5V4h1v2zM6 8V7h1V6h1v2h1V7h5v1h-4v1H7V8zm0 0v1H2V8H1v1H0V7h3v1zm10 1h-1V7h1zm-1 0h-1v2h2v-1h-1zm-4 0h2v1h-1v1h-1zm2 3v-1h-1v1h-1v1H9v1h3v-2zm0 0h3v1h-2v1h-1zm-4-1v1h1v-2H7v1z" />
+                                                    <path d="M7 12h1v3h4v1H7zm9 2v2h-3v-1h2v-1z" />
+                                                </svg> Pix
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Finalize Purchase Button -->
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-outline-orange btn-lg mt-4 w-100">Finalize Purchase</button>
+                    </div>
+                </div>
+
+
+                <!-- Customer Details -->
+                <input type="hidden" name="Details.CustomerName" value="@Model.Details.CustomerName">
+                <input type="hidden" name="Details.CustomerEmail" value="@Model.Details.CustomerEmail">
+
+                <!-- Address Details -->
+                <input type="hidden" name="Details.CustomerAddress.Recipient" id="Address.Recipient" value="@Model.Details.CustomerAddress.Recipient">
+                <input type="hidden" name="Details.CustomerAddress.Country" value="@Model.Details.CustomerAddress.Country">
+                <input type="hidden" name="Details.CustomerAddress.Zip" value="@Model.Details.CustomerAddress.Zip">
+                <input type="hidden" name="Details.CustomerAddress.State" value="@Model.Details.CustomerAddress.State">
+                <input type="hidden" name="Details.CustomerAddress.Street" value="@Model.Details.CustomerAddress.Street">
+                <!-- Cart Items -->
+                @for (var i = 0; i < Model.Details.CartItems.Count; i++)
+                {
+                    <input type="hidden" name="Details.CartItems[@i].ProductId" value="@Model.Details.CartItems[i].ProductId">
+                    <input type="hidden" name="Details.CartItems[@i].ProductName" value="@Model.Details.CartItems[i].ProductName">
+                    <input type="hidden" name="Details.CartItems[@i].ProductImageUrl" value="@Model.Details.CartItems[i].ProductImageUrl">
+                    <input type="hidden" name="Details.CartItems[@i].Quantity" value="@Model.Details.CartItems[i].Quantity">
+                    <input type="hidden" name="Details.CartItems[@i].Price" value="@Model.Details.CartItems[i].Price">
+                }
+
+                <input type="hidden" class="form-control border-none"  name="Details.Subtotal" value="@Model.Details.Subtotal">
+                <input type="hidden" class="form-control border-none"  name="Details.Tax" value="@Model.Details.Tax">
+                <input type="hidden" class="form-control border-none"  name="Details.Total" value="@Model.Details.Total">
+            </form>
+
+
+        </div>
+    </div>
+</div>

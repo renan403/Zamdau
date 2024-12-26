@@ -15,6 +15,7 @@
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\Home\HelpCenter.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Home\Products.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Payment\Card.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Seller\SellProduct.cshtml" />
     <_ContentIncludedByDefault Remove="Views\User\SellerProfile.cshtml" />
     <_ContentIncludedByDefault Remove="Views\User\MoreServicescshtml.cshtml" />
@@ -24,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\User\AddAddress.cshtml" />
+    <None Include="Views\User\RegisterAddress.cshtml" />
     <None Include="Views\Buyer\MoreServicescshtml.cshtml" />
     <None Include="Views\Buyer\PasswordReset.cshtml" />
     <None Include="wwwroot\js\JSCart.js" />
@@ -57,6 +58,10 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\Seller\SellProduct.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Payment\Card.cshtml" />
   </ItemGroup>
 
 </Project>

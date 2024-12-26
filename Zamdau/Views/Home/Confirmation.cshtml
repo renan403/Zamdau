@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Payment Confirmed";
+}
+<body class="d-flex align-items-center justify-content-center min-vh-100" style="height: 100vh;">
+    <div class="text-center">
+        <h1>Payment Confirmed</h1>
+        <p>The payment has been successfully completed.</p>
+        <h4 class="text-success">Thank you! Your payment has been processed successfully.</h4>
+        <button class="btn btn-outline-orange my-3" onclick="window.location.href='@Url.Action("Index", "Home")'">Back to the homepage</button>
+    </div>
+</body>

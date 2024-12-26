@@ -1,0 +1,58 @@
+﻿@model Address
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <h2 class="text-center mb-4">Register Address</h2>
+            <form asp-action="RegisterAddress" method="post" class="address-form border-none p-4 rounded shadow-sm">
+                <fieldset>
+                    <legend class="text-primary mb-3">Personal Information</legend>
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" id="recipient" name="recipient" class="form-control form-control-sm w-100"
+                               placeholder="Your full name" required autocomplete="name"
+                               pattern="[A-Za-zÀ-ÿ\s]+" title="Please enter only letters" />
+                        @Html.ValidationMessageFor(model => model.Recipient, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-3">
+                        <label for="country" class="form-label">Country</label>
+                        <select id="country" name="country" class="form-select form-select-sm w-100" required onchange="lookupAddress()">
+                            <option value="">Choose...</option>
+                            <option value="Brazil">Brazil</option>
+                            <option value="United States">United States</option>
+                            <!-- Add more countries if necessary -->
+                        </select>
+                        @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="zip" class="form-label">ZIP/Postcode</label>
+                        <input type="text" id="zip" name="zip" class="form-control form-control-sm w-100" placeholder="Postal code" required autocomplete="postal-code" onblur="lookupAddress()">
+                        @Html.ValidationMessageFor(model => model.Zip, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="street" class="form-label">Street</label>
+                        <input type="text" id="street" name="street" class="form-control form-control-sm w-100" placeholder="Enter your postal code" required autocomplete="address-line1" onclick="focusZip()" readonly>
+                        @Html.ValidationMessageFor(model => model.Street, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="state" class="form-label">State/Province</label>
+                        <input type="text" id="state" name="state" class="form-control form-control-sm w-100" placeholder="Enter your postal code" required autocomplete="address-line1" onclick="focusZip()" readonly>
+                        @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                    </div>
+                </fieldset>
+
+                <div class="d-grid gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg">Submit Address</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="alert-box" class="custom-alert"></div>

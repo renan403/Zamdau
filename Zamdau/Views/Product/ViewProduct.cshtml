@@ -43,9 +43,8 @@
         </div>
 
         <!-- Product Information -->
-        <div class="col-md-6  mt-1">
+        <div class="col-md-6  mt-1 ">
             <h2>@Model.Name</h2>
-            <p class="text-secondary">Code: Code</p>
 
             <!-- Stock Warning Message -->
             @if (Model.Quantity == 0)
@@ -62,50 +61,71 @@
             }
 
             <!-- Manufacturer, Type, and Availability -->
-                <ul class="list-group list-group-flush text-light mb-3">
-                    <li class="list-group-item text-light bg-dark">
-                        <strong>Manufacturer :</strong> teste
-                </li>
+                <ul class="list-group list-group-flush text-light mb-3 border-light border border-rounded-10">
                     <li class="list-group-item text-light bg-dark ">
-                        <strong>Type :</strong> teste
-                </li>
-                    <li class="list-group-item text-light bg-dark ">
-                        <strong>Availability :</strong> teste
+                        @if(Model.Quantity > 0)
+                        {
+                            <strong>Availability :</strong> <span>In Stock</span>
+                        }
+                        else
+                        {
+                            <strong>Availability :</strong> <span>Out of Stock</span>
+                        }
+
                 </li>
                     <li class="list-group-item bg-dark text-light">
-                    <strong class="me-1">Quantity :</strong>
-                        <select class="form-select-sm d-inline-block w-auto bg-dark text-light border-light" style="width: 70px;" id="quantitySelect">
-                        <option value="0" selected>Select </option>
-                        @for (int i = 1; i <= (Model.Quantity > 5 ? 5 : Model.Quantity); i++)
+                        <strong>Rating:</strong> @for (var j = 0; j < 5; j++)
                         {
-                            <option value="@i">@i</option>
-                        }
-                    </select>
-                </li>
-                    <li class="list-group-item text-light bg-dark text-light">
-                    <strong>Rating:</strong> ⭐⭐⭐⭐☆ (4 out of 5)
+                            if (j < Model.Rating)
+                            {
+                                <span class="starComment">&#9733;</span> <!-- Estrela cheia -->
+                            }
+                            else
+                            {
+                                <span class="starComment text-light">&#9734;</span> <!-- Estrela vazia -->
+                            }
+                        } (@Model.Rating out of 5)
+                    </li>
+                    <li class="list-group-item bg-dark text-light">
+                        <strong>Reviews:</strong> @Model.ReviewCount
+                    </li>
+                    <li class="list-group-item text-light bg-dark text-light ">
+
+
+                        <!-- Select Quantity -->
+                        <div class="mb-3">
+                            <label for="quantitySelect" class="form-label">Quantity:</label>
+                            <select name="Quantity" id="quantitySelect" class="form-select-sm d-inline-block w-auto bg-dark text-light border-light" required>
+                                <option value="" selected>Select</option>
+                                @for (int i = 1; i <= (Model.Quantity > 5 ? 5 : Model.Quantity); i++)
+                                {
+                                    <option value="@i">@i</option>
+                                }
+                            </select>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex gap-2">
+                            <!-- Formulário para Adicionar ao Carrinho -->                         
+                            <button class="btn btn-sm btn-secondary btn-lg w-100" onclick="addToCart('@Model.Id')">
+                                Add to Cart
+                            </button>
+
+                            <!-- Formulário para Comprar Agora -->
+                            @using (Html.BeginForm("BuyNow", "User", FormMethod.Get, new { @class = "w-100" }))
+                            {
+                                <input type="hidden" name="ProductId" value="@Model.Id" />
+                                <input type="hidden" name="Quantity" id="buyNowQuantity" />
+                                <button type="submit" onclick="funcBuyNow()" class="btn btn-sm btn-success btn-lg w-100">Buy Now</button>
+                            }
+                        </div>
                 </li>
             </ul>
 
             <!-- Technical Specifications -->
-                <div class="mb-3 text-light">
+                <div class="mb-3 text-light ">
                 <h4>Technical Specifications</h4>
-                @*<ul class="list-group list-group-flush ">
-                        <li class="list-group-item bg-dark text-light">
-                            <strong>Material :</strong> teste
-                    </li>
-                        <li class="list-group-item  bg-dark text-light">
-                        <strong>Dimensions :</strong> teste
-                    </li>
-                        <li class="list-group-item bg-dark text-light">
-                            <strong>Weight :</strong> teste
-                    </li>
-                        <li class="list-group-item bg-dark text-light">
-                            <strong>Color :</strong> teste
-                    </li>
-                    </ul>*@
-                    
-                        <ul class="list-group list-group-flush">
+                    <ul class="list-group list-group-flush border-light border border-rounded-10">
                             @foreach (var spec in Model.Specifications)
                             {
                                 <li class="list-group-item bg-dark text-light">
@@ -113,31 +133,54 @@
                                 </li>
                             }
                         </ul>
-                    
-
             </div>
 
 
             <!-- Description -->
             <div class="my-3">
                 <h4>Description</h4>
-                <p>@Model.Description</p>
+                <h6>@Model.Description</h6>
             </div>
 
-            <!-- Price and Buttons -->
-            <h3 class="my-3">Price: $@Model.Price</h3>
-            <button class="btn btn-outline-secondary btn-lg">Add to Cart</button>
-            <button class="btn btn-outline-success btn-lg ms-2">Buy Now</button>
+
         </div>
     </div>
-
-    <!-- Customer Reviews Section -->
+        <div id="alert-box" class="custom-alert-addcart">Produto adicionado ao carrinho!</div>    <!-- Customer Reviews Section -->
     <div class="row mt-5">
         <div class="col-12 ">
             <h4>Customer Reviews</h4>
             <div class="list-group">
-                <!-- Example Reviews -->
-                    <div class="list-group-item bg-dark text-light border-light">
+ 
+                    @if(Model.Comments.Count > 0)
+                    {
+                        foreach (var i in Model.Comments.Values)
+                        {
+                            <div class="list-group-item bg-dark text-light border-light">
+                                <h5 class="mb-1 text-capitalize">@i.Author</h5>
+                                <p>@for (var j = 0; j < 5; j++)
+                                    {
+                                        if (j < i.Rating)
+                                        {
+                                            <span class="starComment">&#9733;</span> <!-- Estrela cheia -->
+                                        }
+                                        else
+                                        {
+                                            <span class="starComment text-light">&#9734;</span> <!-- Estrela vazia -->
+                                        }
+                                    } &ensp; @i.Text</p>
+                                <small class="text-secondary">Review date: @i.DatePosted.ToString("U")</small>
+                            </div>
+                        }
+
+                    }
+                    else
+                    {
+                        <h5 class="alert text-center py-2 px-3 mb-2 d-inline-block">
+                            No Comments
+                        </h5>
+                    }
+                    <!-- Example Reviews -->
+                  @* <div class="list-group-item bg-dark text-light border-light">
                     <h5 class="mb-1">User 1</h5>
                     <p>⭐⭐⭐⭐⭐ - Excellent product! It met all my expectations.</p>
                     <small class="text-secondary">Review date: 10/01/2024</small>
@@ -146,10 +189,76 @@
                     <h5 class="mb-1">User 2</h5>
                     <p>⭐⭐⭐☆☆ - Good product, but could have better quality in the details.</p>
                     <small class="text-secondary">Review date: 09/25/2024</small>
-                </div>
-                <!-- Add more reviews as needed -->
+                    </div>*@
+                    <!-- Add more reviews as needed -->
             </div>
         </div>
     </div>
 </div>
 </div>
+
+<script>
+    function showAlertAddCart(message) {
+        const alertBox = document.getElementById('alert-box');
+
+        // Atualiza a mensagem do alerta, se necessário
+        alertBox.textContent = message;
+
+        // Adiciona a classe para exibir o alerta
+        alertBox.classList.add('show');
+
+        // Remove o alerta após 3 segundos
+        setTimeout(() => {
+            alertBox.classList.remove('show');
+        }, 3000);
+    }
+    function funcBuyNow() {
+        var selectedQuantity = document.getElementById('quantitySelect').value;
+        document.getElementById('buyNowQuantity').value = selectedQuantity;
+    }
+    function addToCart(productId) {
+
+        var selectedQuantity = document.getElementById('quantitySelect').value;
+     
+        $.ajax({
+            url: '@Url.Action("AddToCart", "User")',  // URL da ação AddToCart
+            type: 'POST',  // Método POST
+            data: { ProductId: productId, Quantity: selectedQuantity },  // Dados a serem enviados
+            success: function (response) {
+                showAlertAddCart("Product added to cart!");
+            },
+            error: function (xhr, status, error) {
+                // Capturando o erro detalhado
+                console.log("error ")
+                console.error("Error adding to cart:", error);
+                console.error("Status:", status);
+                console.error("Error details:", xhr.responseText);
+
+                // Se o status for 401 (não autorizado), redireciona para a página de login
+                if (xhr.status === 401) {
+                    console.log("error 401")
+                    window.location.href = '/Buyer/Login?ReturnUrl=' + encodeURIComponent('/User/AddToCart?productId=' + productId + '&Quantity=' + selectedQuantity);  // Redireciona para o login
+                } else {
+                    showAlertAddCart("An error occurred while adding the product to the cart. Please try again later..");
+                }
+            }
+        });
+    }
+
+
+    // Atualizar os campos ocultos nos formulários com a quantidade selecionada
+    document.getElementById('quantitySelect').addEventListener('change', function () {
+        const selectedQuantity = this.value;       
+        document.getElementById('addToCartQuantity').value = selectedQuantity;
+        document.getElementById('buyNowQuantity').value = selectedQuantity;
+    });
+
+    // Garantir que o valor padrão seja atualizado ao carregar a página
+    document.addEventListener('DOMContentLoaded', function () {
+        const quantitySelect = document.getElementById('quantitySelect');
+        const defaultQuantity = quantitySelect.value || 1;
+        quantitySelect.value = defaultQuantity;
+        document.getElementById('addToCartQuantity').value = defaultQuantity;
+        document.getElementById('buyNowQuantity').value = defaultQuantity;
+    });
+</script>

@@ -1,5 +1,7 @@
-﻿
-<title>Address Form</title>
+﻿@model Address
+@{
+    ViewBag.Title = "Address";
+}
 
 <style>
     body {
@@ -38,129 +40,113 @@
     <h2>Your Addresses</h2>
 
     <div class="address-list">
-        <h3 class="mb-4">Registered Addresses</h3>
-        <ul id="addressList" class="list-unstyled">
-            <!-- Endereço 1 -->
-            <li>
-                <form class="address-form main" data-id="1">
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="street1" class="form-label">Street</label>
-                            <input type="text" id="street1" name="street1" class="form-control" value="123 Main St" disabled>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="neighborhood1" class="form-label">Neighborhood</label>
-                            <input type="text" id="neighborhood1" name="neighborhood1" class="form-control" value="Neighborhood" disabled>
-                        </div>
-                    </div>
 
-                    <div class="row mb-3">
-                        <div class="col-md-4">
-                            <label for="city1" class="form-label">City</label>
-                            <input type="text" id="city1" name="city1" class="form-control" value="City" disabled>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="state1" class="form-label">State</label>
-                            <input type="text" id="state1" name="state1" class="form-control" value="State" disabled>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="zip1" class="form-label">ZIP</label>
-                            <input type="text" id="zip1" name="zip1" class="form-control" value="00000-000" disabled>
-                        </div>
-                    </div>
 
-                    <div class="mb-3">
-                        <label for="country1" class="form-label">Country</label>
-                        <input type="text" id="country1" name="country1" class="form-control" value="Country" disabled>
-                    </div>
-
-                    <!-- Checkbox para indicar endereço principal -->
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" id="mainAddress1" name="mainAddress1" checked disabled>
-                        <label class="form-check-label" for="mainAddress1">
-                            Main Address
-                        </label>
-                    </div>
-
-                    <div class="d-flex gap-2">
-                        <button class="btn btn-outline-primary edit-button" type="button">Edit</button>
-                        <button class="btn btn-outline-success save-button" type="submit" style="display: none;">Save</button>
-                        <button class="btn btn-outline-danger cancel-button" type="button" style="display: none;">Cancel</button>
-                    </div>
-                </form>
-            </li>
-
-            <!-- Endereço 2 -->
-            <li>
-                <form class="address-form" data-id="2">
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="street2" class="form-label">Street</label>
-                            <input type="text" id="street2" name="street2" class="form-control" value="456 Market St" disabled>
+        @if (Model.Zip is null)
+        {
+            <div class="container m-3 my-5">
+                <div class="col">
+                    <div class="">
+                        <div class="card-body text-center justify-content-between align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pin-map" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M3.1 11.2a.5.5 0 0 1 .4-.2H6a.5.5 0 0 1 0 1H3.75L1.5 15h13l-2.25-3H10a.5.5 0 0 1 0-1h2.5a.5.5 0 0 1 .4.2l3 4a.5.5 0 0 1-.4.8H.5a.5.5 0 0 1-.4-.8z" />
+                                <path fill-rule="evenodd" d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z" />
+                            </svg>
+                            <p class="card-text">Your address is empty</p>
+                            <a asp-action="RegisterAddress" class="btn btn-outline-orange  w-100">Add New Address</a>
                         </div>
-                        <div class="col-md-6">
-                            <label for="neighborhood2" class="form-label">Neighborhood</label>
-                            <input type="text" id="neighborhood2" name="neighborhood2" class="form-control" value="Market Neighborhood" disabled>
-                        </div>
-                    </div>
 
-                    <div class="row mb-3">
-                        <div class="col-md-4">
-                            <label for="city2" class="form-label">City</label>
-                            <input type="text" id="city2" name="city2" class="form-control" value="City" disabled>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="state2" class="form-label">State</label>
-                            <input type="text" id="state2" name="state2" class="form-control" value="State" disabled>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="zip2" class="form-label">ZIP</label>
-                            <input type="text" id="zip2" name="zip2" class="form-control" value="11111-111" disabled>
-                        </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="mb-3">
-                        <label for="country2" class="form-label">Country</label>
-                        <input type="text" id="country2" name="country2" class="form-control" value="Country" disabled>
-                    </div>
 
-                    <!-- Checkbox para indicar endereço principal -->
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" id="mainAddress2" name="mainAddress2">
-                        <label class="form-check-label" for="mainAddress2">
-                            Set as main address
-                        </label>
-                    </div>
+        }
+        else
+        {
+            <h3 class="mb-4">Registered Address</h3>
+            <ul id="addressList" class="list-unstyled">
+                <li>
+                    <form asp-action="UpdateAddress" method="post" class="address-form main" data-id="1">
 
-                    <div class="d-flex gap-2">
-                        <button class="btn btn-outline-primary edit-button" type="button">Edit</button>
-                        <button class="btn btn-outline-success save-button" type="submit" style="display: none;">Save</button>
-                        <button class="btn btn-outline-danger cancel-button" type="button" style="display: none;">Cancel</button>
-                    </div>
-                </form>
-            </li>
-        </ul>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" id="name" name="name" class="form-control" value="@Model.Recipient" disabled>
+                                @Html.ValidationMessageFor(model => model.Recipient, "", new { @class = "text-danger" })
+                            </div>
+                        </div> 
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="street" class="form-label">Street</label>
+                                <input type="text" id="street" name="street" class="form-control" value="@Model.Street" readonly disabled>
+                                @Html.ValidationMessageFor(model => model.Street, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="state" class="form-label">State</label>
+                                <input type="text" id="state" name="state" class="form-control" value="@Model.State" readonly disabled>
+                                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-4">
+                                <label for="zip" class="form-label">ZIP</label>
+                                <input type="text" id="zip" name="zip" class="form-control" value="@Model.Zip" disabled onblur="lookupAddress()">
+                                @Html.ValidationMessageFor(model => model.Zip, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="country" class="form-label">Country</label>
+                            @*<input type="text" id="country" name="country" class="form-control" value="@Model.Country" disabled>*@
+                            <select id="country" name="country" class="form-select w-100" required onchange="lookupAddress()" disabled>
+                                <option value="Brazil" selected="@(Model.Country == "Brazil")">Brazil</option>
+                                <option value="United States" selected="@(Model.Country == "United States")">United States</option>
+                            </select>
+                            @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary edit-button" type="button">Edit</button>
+
+                            <a asp-action="DeleteAddress" class="btn btn-outline-danger delete-button" type="button">Delete</a>
+
+                            <button class="btn btn-outline-success save-button" type="submit" style="display: none;" onclick="showAlertPositive('Updating')">Save</button>
+
+                            <button class="btn btn-outline-danger cancel-button" type="button" style="display: none;">Cancel</button>
+                        </div>
+                    </form>
+                </li>
+
+
+            </ul>
+        }
     </div>
 
-    <button id="addAddressButton" class="btn-address  w-100">Add New Address</button>
+
 </div>
 
-
+<div id="alert-box" class="custom-alert"></div>  
 
 
 <script>
+    
     document.querySelectorAll('.edit-button').forEach(button => {
         button.addEventListener('click', function () {
             const form = this.closest('.address-form');
-            const inputs = form.querySelectorAll('input');
+           
+            const inputs = form.querySelectorAll('input:not([readonly]),select');
             const saveButton = form.querySelector('.save-button');
+            const deleteButton = form.querySelector('.delete-button');
             const cancelButton = form.querySelector('.cancel-button');
 
             // Habilita os campos de input para edição
             inputs.forEach(input => input.disabled = false);
-
+            
             // Mostra botões "Save" e "Cancel", oculta "Edit"
             this.style.display = 'none';
+            deleteButton.style.display = 'none';
             saveButton.style.display = 'block';
             cancelButton.style.display = 'block';
         });
@@ -170,43 +156,71 @@
         button.addEventListener('click', function () {
             const form = this.closest('.address-form');
             const inputs = form.querySelectorAll('input');
+            const selects = form.querySelectorAll('select');
             const editButton = form.querySelector('.edit-button');
             const saveButton = form.querySelector('.save-button');
+            const deleteButton = form.querySelector('.delete-button');
 
-            // Restaura os valores iniciais dos inputs e desabilita a edição
+            // Restaurar os valores dos inputs e selects
+            inputs.forEach(input => {
+                input.value = input.defaultValue;  // Restaura o valor original do input
+                input.disabled = true;
+            });
+
+            selects.forEach(select => {
+                // Restaurar o valor do select ao valor inicial
+                const originalValue = select.getAttribute('data-original-value');
+                select.value = originalValue || select.value;
+                select.disabled = true;
+            });
+
+            // Restaurar os botões
+            editButton.style.display = 'block';
+            deleteButton.style.display = 'block';
+            saveButton.style.display = 'none';
+            this.style.display = 'none';
+        });
+    });
+
+    // Salve o valor original do select quando ele for carregado
+    document.querySelectorAll('select').forEach(select => {
+        select.setAttribute('data-original-value', select.value);
+    });
+
+
+
+    document.querySelectorAll('.address-form').forEach(form => {
+        const inputs = form.querySelectorAll('input');
+        const editButton = form.querySelector('.edit-button');
+        const saveButton = form.querySelector('.save-button');
+        const cancelButton = form.querySelector('.cancel-button');
+        const deleteButton = form.querySelector('.delete-button');
+
+        editButton.addEventListener('click', function () {
+            // Habilitar os inputs para edição
+            inputs.forEach(input => input.disabled = false);
+
+            // Mostrar/ocultar botões
+            editButton.style.display = 'none';
+            deleteButton.style.display = 'none';
+            saveButton.style.display = 'block';
+            cancelButton.style.display = 'block';
+        });
+
+        cancelButton.addEventListener('click', function () {
+            // Reverter os valores dos inputs para o estado original
             inputs.forEach(input => {
                 input.value = input.defaultValue;
                 input.disabled = true;
             });
 
-            // Mostra o botão "Edit", oculta "Save" e "Cancel"
+            // Restaurar os botões
             editButton.style.display = 'block';
-            this.style.display = 'none';
+            deleteButton.style.display = 'block';
             saveButton.style.display = 'none';
-        });
-    });
-
-    document.querySelectorAll('.save-button').forEach(button => {
-        button.addEventListener('click', function (event) {
-            event.preventDefault();
-            const form = this.closest('.address-form');
-            const inputs = form.querySelectorAll('input');
-            const editButton = form.querySelector('.edit-button');
-            const cancelButton = form.querySelector('.cancel-button');
-
-            // Simula o salvamento
-            alert('Address saved successfully.');
-
-            // Desabilita a edição após salvar
-            inputs.forEach(input => {
-                input.defaultValue = input.value;
-                input.disabled = true;
-            });
-
-            // Mostra o botão "Edit", oculta "Save" e "Cancel"
-            editButton.style.display = 'block';
-            this.style.display = 'none';
             cancelButton.style.display = 'none';
         });
     });
+ 
+    
 </script>

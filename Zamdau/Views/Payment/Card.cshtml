@@ -1,11 +1,15 @@
-﻿<div class="container">
+﻿@model Card
+@{
+    ViewData["Title"] = "Card";
+}
+<div class="container">
     <div class=" d-flex justify-content-center align-items-center min-vh-90">
         <div class="bg-dark border-rounded-10 p-4 " style="width: 400px;">
             <h3 class="text-center mb-4">Credit/Debit Card Payment</h3>
-            <form>
+            <form asp-action="Card" asp-controller="Payment" method="post">
                 <div class="mb-3">
                     <label for="paymentType" class="form-label">Payment Type</label>
-                    <select class="form-select" id="paymentType" required onchange="toggleInstallments()">
+                    <select class="form-select" id="paymentType" name="paymentType" required onchange="toggleInstallments()">
                         <option value="" disabled selected>Select an option</option>
                         <option value="credit">Credit</option>
                         <option value="debit">Debit</option>
@@ -13,7 +17,7 @@
                 </div>
                 <div id="installmentsSection" class="mb-3" style="display: none;">
                     <label for="installments" class="form-label">Installments</label>
-                    <select class="form-select" id="installments" onchange="calculateInstallment()">
+                    <select class="form-select" id="installments" name="installments" onchange="calculateInstallment()">
                         <option value="" disabled selected>Select the number of installments</option>
                         @for (int i = 1; i <= 10; i++)
                         {
@@ -24,25 +28,27 @@
                 </div>
                 <div class="mb-3">
                     <label for="cardName" class="form-label">Cardholder Name</label>
-                    <input type="text" class="form-control" id="cardName" placeholder="e.g., John Doe" required>
+                    <input type="text" class="form-control" id="CardholderName" name="CardholderName" placeholder="e.g., John Doe" required>
                 </div>
                 <div class="mb-3">
                     <label for="cardNumber" class="form-label">Card Number</label>
-                    <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9101 1121" required>
+                    <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="1234 5678 9101 1121" value="1234567891011121" required>
                 </div>
                 <div class="row">
                     <div class="col-6 mb-3">
                         <label for="expiryDate" class="form-label">Expiry Date</label>
-                        <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" required>
+                        <input type="text" class="form-control" id="expiryDate" name="expiryDate" placeholder="MM/YY" value="11/99" required>
                     </div>
                     <div class="col-6 mb-3">
                         <label for="cvv" class="form-label">CVV</label>
-                        <input type="text" class="form-control" id="cvv" placeholder="123" required>
+                        <input type="text" class="form-control" id="cvv" name="cvv" placeholder="123" value="123" required>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="amount" class="form-label">Total Amount</label>
-                    <input type="number" class="form-control" id="amount" placeholder="Enter total amount" required>
+                  
+                    <input type="text" class="form-control"  value="@Model.Amount" readonly>
+                    <input type="hidden" id="amount" name="amount" value="@Model.Amount">
+                    <input type="hidden" id="OrderNumber" name="OrderNumber" value="@Model.OrderNumber">
                 </div>
                 <button type="submit" class="btn btn-outline-orange w-100">Pay Now</button>
             </form>

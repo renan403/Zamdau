@@ -14,6 +14,30 @@ namespace Zamdau.Models
         public bool IsAuthenticated { get; set; }
         public string? ReturnUrl { get; set; }
     }
+   
+
+public class Address
+    {
+        [Required(ErrorMessage = "Full name is required.")]
+        [StringLength(100, ErrorMessage = "Full name can't be longer than 100 characters.")]
+        public string Recipient { get; set; }
+
+        [Required(ErrorMessage = "Country is required.")]
+        public string Country { get; set; }
+
+        [Required(ErrorMessage = "ZIP/Postcode is required.")]
+        [StringLength(10, ErrorMessage = "ZIP code can't be longer than 10 characters.")]
+        public string Zip { get; set; }
+
+        [Required(ErrorMessage = "Street is required.")]
+        [StringLength(200, ErrorMessage = "Street name can't be longer than 200 characters.")]
+        public string Street { get; set; }
+
+        [Required(ErrorMessage = "State/Province is required.")]
+        [StringLength(100, ErrorMessage = "State/Province name can't be longer than 100 characters.")]
+        public string State { get; set; }
+    }
+
     public class SignUp
     {
         [Required]
@@ -41,6 +65,12 @@ namespace Zamdau.Models
     {
         public string? Email { get; set; }
         public string? Error { get; set; }
+    }
+    public class Cart
+    {
+        public Product Product { get; set; }
+        public int Quantity { get; set; }
+        public bool IsSelected { get; set; }
     }
     public class Account
     {

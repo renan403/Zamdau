@@ -27,16 +27,16 @@
         </nav>
     </div>
     <div class="container mt-4">
-        <div class="card">
+        <div class="card bg-transparent">
             <div class="card-header bg-orange">
-                <h2> @Model.Name</h2>
+                <h2> Seller - @Model.Name</h2>
             </div>
-            <div class="card-body">
+            <div class="card-body bg-transparent text-light">
                 <div class="row">
-                    <div class="col-md-4 text-center">
+                    <div class="col-md-4 text-center ">
                         <img src="@(string.IsNullOrEmpty(Model.ProfilePictureUrl) ? Url.Content("~/images/Profile/Seller/imgNoPhoto.png") : Model.ProfilePictureUrl)"
                              alt="Seller Picture"
-                             class="img-fluid rounded-circle mb-3"
+                             class="img-fluid rounded-circle mb-3 ProfileThumbnails"
                              style="max-width: 200px;">
                     </div>
                     <div class="col-md-8">
@@ -61,19 +61,19 @@
                     @foreach (var product in Model.Products)
                     {
                         <div class="col-md-3 mb-3">
-                            <div class="card h-100">
+                                <div class="card h-100 bg-dark text-light">
                                 <img src="@product.ImageUrl" class="card-img-top img-fluid" alt="@product.Name">
                                 <div class="card-body">
-                                    <h6 class="card-title">@product.Name</h6>
-                                    <p class="card-text text-muted">@product.Price.ToString("C")</p>
-                                    <a href="/Product/ViewProduct/@product.Id" class="btn btn-sm btn-orange">View Details</a>
+                                    <h6 class="card-title ">@product.Name</h6>
+                                        <p class="card-text text-light">@product.Price.ToString("C")</p>
+                                        <a asp-action="ViewProduct" asp-controller="Product" asp-route-productId="@product.Id" class="btn btn-sm btn-orange">View Details</a>
 
                                     <!-- Botões para editar e excluir produto -->
                                     @if (@Model.OwnerUsername)
                                     {
                                         <div class="mt-2">
                                             <a href="/product/edit/@product.Id" class="btn btn-sm btn-outline-orange">Edit</a>
-                                            <a href="/product/delete/@product.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                                                <a asp-action="DeleteProductSeller" asp-controller="Product" asp-route-productId="@product.Id" class="btn btn-sm btn-outline-danger">Delete</a>
                                         </div>
                                     }
                                 </div>
@@ -94,3 +94,20 @@
         </div>
     </div>
 </div>
+<script>
+
+    function previewImage(event) {
+        const input = event.target;
+        const preview = document.getElementById('preview');
+
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result; // Define a URL da imagem carregada no elemento <img>
+            };
+
+            reader.readAsDataURL(input.files[0]); // Lê o arquivo como Data URL
+        }
+    }
+</script>

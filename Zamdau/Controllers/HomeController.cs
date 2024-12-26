@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Zamdau.Models;
 using System.Diagnostics;
-
 using Firebase.Auth;
 using Zamdau.Interfaces;
 using System.Reflection.Metadata.Ecma335;
@@ -9,28 +8,35 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Zamdau.Services;
+using API_Zamdau.User;
+using System;
 
 namespace Zamdau.Controllers
 {
 
-    public class HomeController(ILogger<HomeController> logger, IUserService user) : Controller
+    public class HomeController(ILogger<HomeController> logger, IUserService user, IProductService product, IPaymentService payment) : Controller
     {
         private readonly ILogger<HomeController> _logger = logger;
         private readonly IUserService _user = user;
+        private readonly IPaymentService _payment = payment;
+        private readonly IProductService _product = product;
 
         public async Task<IActionResult> Index()
         {
-            //return RedirectToAction("Telateste", "Home");
-            
-            
-            var produtos = new List<Product>
-            {
-               new Product { Id = 1,Brand="test",Code="00001",Manufacturer="fab",Type="tip", Name = "Monitor HD10k", Description = "Monitor with advanced 22nd century technology", ImageUrl = "./images/Products/Monitor/Designer (19).jpeg", Price = 2500.00 },
-                new Product { Id = 2,Brand="test",Code="00001",Manufacturer="fab",Type="tip", Name = "Keyboard XXIIV", Description = "Keyboard with advanced 23nd", ImageUrl = "./images/Products/KeyBoard/Designer (15).jpeg", Price = 500.00 },
-                new Product { Id = 3,Brand="test",Code="00001",Manufacturer="fab",Type="tip", Name = "Zamdau console", Description = "Exclusive Zamdau console", ImageUrl = "./images/Products/Console/Designer (23).jpeg", Price = 1000.00 },
-                new Product { Id = 4,Brand="test",Code="00001",Manufacturer="fab",Type="tip", Name = "Zamdau robot", Description = "Exclusive Zamdau robot", ImageUrl = "./images/Products/Robot/Designer (28).jpeg", Price = 1000.00 },
-            };
-            return View(produtos);
+            //RedirectToAction("Pix", "Home", new("guid"));
+            // return View("Pix", new Pix() { OrderNumber = Guid.NewGuid().ToString()});
+             //return RedirectToAction("TelaTeste", "Home");
+            //return RedirectToAction("Orders", "User");
+
+            var products = (await _product.GetAllProductAsync()).Where(b => b.Brand == "Zamdau");
+        
+            return View(products);
+        }
+        public async Task<IActionResult> Confirmation(string OrderNumber)
+        {
+            var order = await _payment.UpdateOrderStatusByIdAsync(OrderNumber, PaymentStatus.Shipped);
+
+            return View();
         }
         [HttpPost]
         public IActionResult TelaTeste(ModelTest model)

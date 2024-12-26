@@ -1,0 +1,18 @@
+00:07:43 : Exception occured while authenticating.
+Url: https://www.googleapis.com/identitytoolkit/v3/relyingparty/deleteAccount?key={0}
+Request Data: {"idToken":"eyJhbGciOiJSUzI1NiIsImtpZCI6ImJkMGFlMTRkMjhkMTY1NzhiMzFjOGJlNmM4ZmRlZDM0ZDVlMWExYzEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcHJvamV0b3BvcnQtNTBiNjYiLCJhdWQiOiJwcm9qZXRvcG9ydC01MGI2NiIsImF1dGhfdGltZSI6MTczMzYyNTI5NCwidXNlcl9pZCI6ImVNMXc4eUtBVHRQQ3VRWkNVY09iQncwNW96WTIiLCJzdWIiOiJlTTF3OHlLQVR0UEN1UVpDVWNPYkJ3MDVvelkyIiwiaWF0IjoxNzMzNjI1Mjk0LCJleHAiOjE3MzM2Mjg4OTQsImVtYWlsIjoiemFtZGF1bWFya2V0cGxhY2VAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsiemFtZGF1bWFya2V0cGxhY2VAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.VKKMwCtN7aCK8a7J7rOKQnKmhEYkjNksL6h7Fos6LXU2UXuCC4IsRhkwNFEY1_FZuVAeZA1aDMpj9fmq0KHQbuwfe60xNq-KwgP5s-cS5uFZK1QWCKwyxK22Elt4rKfLWf4q3LrL-GS1ZARKocuGRiD1ghvFt2_QhsZsCgELoJ4kFORUWGGiKNdxs2xd-FWwI0xyTQhYUYfb7UrHxPe__BTU8YbqgC0RlW0ROG509nU0n2bNtp01skdFyqj9oyiQdX2Vy_W11YvpM5OX53tyFPv-l9vvv5pdi7YlHu3pmfKAY-8mWWKy1GORtxx5zGlTY8KgIri9jfcud1XpMJ1QWQ"}
+Response: {
+  "error": {
+    "code": 400,
+    "message": "INVALID_ID_TOKEN",
+    "errors": [
+      {
+        "message": "INVALID_ID_TOKEN",
+        "domain": "global",
+        "reason": "invalid"
+      }
+    ]
+  }
+}
+
+Reason: InvalidIDToken

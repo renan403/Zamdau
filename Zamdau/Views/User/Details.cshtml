@@ -1,0 +1,292 @@
+﻿@model Orders
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="container mt-4 ">
+    <h2>Order Details</h2>
+    <hr />
+
+    <!-- Informações do Pedido -->
+    <div class="card mb-4 bg-dark text-light">
+        <div class="card-header">
+            <h4>Order #@Model.OrderNumber</h4>
+        </div>
+        <div class="card-body bg-dark ">
+            <p>
+                <strong>Status:</strong>
+                <span class="badge
+        @(Model.PaymentStatus == PaymentStatus.Completed ? "badge-success" :
+          Model.PaymentStatus == PaymentStatus.Processing? "badge-warning" :
+          Model.PaymentStatus == PaymentStatus.Shipped ? "badge-info" :
+          Model.PaymentStatus == PaymentStatus.Pending ? "badge-grey" :
+          Model.PaymentStatus == PaymentStatus.Cancelled ? "badge-danger" : "badge-secondary")">
+                    @Model.PaymentStatus
+                </span>
+                @if (Model.PaymentStatus == PaymentStatus.Pending || Model.PaymentStatus == PaymentStatus.Processing)
+                {
+
+                    <button id="paymentOptionsButton" class="btn btn-sm btn-outline-warning" type="button">Proceed to Checkout</button>
+                }
+                else if (Model.PaymentStatus == PaymentStatus.Shipped)
+                {
+                    <a asp-action="UpdateOrder" asp-controller="User" asp-route-id="@Model.OrderNumber" class="btn btn-sm btn-outline-light">Update status</a>
+
+                }
+            </p>
+            <p><strong>Order Date:</strong> @Model.Created.ToString("dd/MM/yyyy")</p>
+
+            <p>
+                <strong>Total:</strong> @Model.TotalAmount.ToString("C")
+                <i class="bi bi-question-octagon " data-bs-toggle="tooltip" data-bs-placement="top" title="This field represents the total value of the purchase, including taxes and shipping.">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-question-octagon link-orange" viewBox="0 0 16 16">
+                        <path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
+                        <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
+                    </svg>
+                </i>
+            </p>
+        </div>
+    </div>
+
+    <!-- Produtos no Pedido -->
+    <div class="card mb-4 bg-dark">
+        <div class="card-header bg-dark text-light">
+            <h5>Products</h5>
+        </div>
+        <div class="card-body bg-dark">
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>
+                            Total
+
+                           
+                        </th>
+                        @if (Model.PaymentStatus == PaymentStatus.Completed)
+                        {
+                            <th>Rate this product</th>
+                        }
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Items)
+                    {
+
+                        <tr>
+                            <td><a asp-action="ViewProduct" asp-controller="Product" asp-route-productId="@item.ProductId" class="link-warning">@item.ProductName</a></td>
+                            <td>@item.Quantity</td>
+                            <td>@item.Price.ToString("C")</td>
+                            <td>
+                                @{
+
+                                    var price = Convert.ToDecimal(item.Price) * Convert.ToInt32(item.Quantity);
+                                    var tax = price * 0.10m;
+                                    var totalAmount = price + tax;
+                                }
+                                @totalAmount.ToString("C")
+                                <i class="bi bi-question-octagon " data-bs-toggle="tooltip" data-bs-placement="top" title="This field represents the total value of the product, including taxes.">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-question-octagon link-orange" viewBox="0 0 16 16">
+                                        <path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1z" />
+                                        <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286m1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94" />
+                                    </svg>
+                                </i>
+                            </td>
+                            @if (Model.PaymentStatus == PaymentStatus.Completed)
+                            {
+                                <td>
+                                    @if (item.Commented)
+                                    {
+                                        <p class="alert alert-success text-center py-2 px-3 mb-2 d-inline-block rounded-pill">
+                                            Commented
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#@item.ProductId.GetHashCode()">Rate</button>
+                                    }
+                                </td>
+                            }
+                            
+                        </tr>
+                        @using (Html.BeginForm("AddComment", "User", FormMethod.Post))
+                        {
+                            <!-- Modal -->
+                            <div class="modal fade" id="@item.ProductId.GetHashCode()" tabindex="-1" aria-labelledby="rateModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content bg-dark text-light">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="rateModalLabel">Rate this Product - @item.ProductName</h5>
+                                            <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- Hidden field for Author -->
+                                            <input type="hidden" name="CustomerId" value="@Model.CustomerId" />
+                                            <input type="hidden" name="OrderNumber" value="@Model.OrderNumber" />
+                                            <input type="hidden" name="ProductId" value="@item.ProductId" />
+
+                                            <!-- Star Rating -->
+                                            <div id="stars" class="d-flex justify-content-center mb-3">
+                                                @for (int i = 1; i <= 5; i++)
+                                                {
+                                                    <span class="star" data-value="@i">&#9733;</span>
+                                                }
+                                            </div>
+                                            <!-- Hidden field for Rating -->
+                                            <input type="hidden" id="@item.ProductId" name="Rating" />
+
+                                            <!-- Comment Section -->
+                                            <div class="mb-3">
+                                                <label for="Text" class="form-label">Add a Comment (Optional):</label>
+                                                <textarea class="form-control" id="Text" name="Text" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-outline-orange">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script>
+                                document.addEventListener('DOMContentLoaded', () => {
+                                    const stars = document.querySelectorAll('.star');
+                                    const ratingInput = document.getElementById('@item.ProductId');
+
+                                    // Function to handle the rating logic
+                                    function handleRating(star) {
+                                        const rating = star.getAttribute('data-value');
+                                        ratingInput.value = rating;
+
+                                        // Update star visuals
+                                        stars.forEach(s => {
+                                            if (s.getAttribute('data-value') <= rating) {
+                                                s.style.color = 'gold';
+                                            } else {
+                                                s.style.color = 'lightgray';
+                                            }
+                                        });
+                                    }
+
+                                    // Adding event listeners to each star
+                                    stars.forEach(star => {
+                                        star.addEventListener('click', () => {
+                                            handleRating(star);
+                                        });
+                                    });
+                                });
+                            </script>
+
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Botões de Ação -->
+    <div class="d-flex justify-content-between">
+        <a asp-action="Orders" asp-controller="User" class="btn btn-outline-secondary">Back to Orders</a>
+        @if (Model.PaymentStatus == PaymentStatus.Pending || Model.PaymentStatus == PaymentStatus.Processing)
+        {
+
+            <a asp-action="CancelOrder" asp-controller="User" asp-route-id="@Model.OrderNumber" class="btn btn-outline-danger">Cancel Order</a>
+        }
+        else
+        {
+            <div data-bs-toggle="tooltip" title="You can only cancel pending or processing orders.">
+                <button class="btn btn-outline-danger" disabled>Cancel Order</button>
+            </div>
+
+        }
+
+    </div>
+</div>
+
+<div id="popoverContent" class="d-none ">
+    <a asp-action="Card" asp-controller="Payment" asp-route-Amount="@Model.TotalAmount" asp-route-OrderNumber="@Model.OrderNumber" class="btn btn-outline-success ">Credit Card</a>
+    <a asp-action="Pix" asp-controller="Payment" asp-route-OrderNumber="@Model.OrderNumber" class="btn btn-outline-warning ">Pix</a>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+            new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+
+
+
+
+</script>
+
+<style>
+    /* Customiza a cor de fundo do popover */
+    .popover {
+        background-color: #121212;
+        border: none;
+    }
+        /* Customiza a seta do popover */
+        .popover .popover-arrow {
+            border-top-color: black; /* Cor da seta */
+        }
+</style>
+
+<script>
+    // Inicializa o popover após a página ser carregada
+    $(document).ready(function () {
+        $('#paymentOptionsButton').popover({
+            html: true,  // Habilita HTML no conteúdo do popover
+            content: function () {
+                return $('#popoverContent').html();  // Pega o conteúdo do popover do HTML
+            },
+            placement: 'right',  // Exibe o popover abaixo do botão
+            trigger: 'click'      // Exibe o popover ao clicar no botão
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+@*
+Status Comuns e Cancelamento
+Pending (Pendente):
+
+Possível cancelar: O pedido está aguardando confirmação ou processamento inicial.
+Motivo: Nenhuma ação definitiva foi tomada no pedido.
+Processing (Processando):
+
+Possível cancelar, dependendo da lógica de negócio:
+Se o processamento ainda não envolveu o envio do pedido.
+Após o envio começar, o cancelamento pode não ser permitido.
+Motivo: Produtos podem já estar em preparação ou prontos para envio.
+Shipped (Enviado):
+
+Não é possível cancelar diretamente.
+Motivo: O pedido já saiu para entrega. O cliente pode solicitar um reembolso ou devolução.
+Completed (Concluído):
+
+Não é possível cancelar.
+Motivo: O pedido foi entregue ao cliente.
+Cancelled (Cancelado):
+
+Não é necessário exibir a opção.
+Motivo: O pedido já foi cancelado.
+
+
+*@

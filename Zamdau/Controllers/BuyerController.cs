@@ -44,9 +44,10 @@ namespace Zamdau.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(SignIn userLogin)
         {
-            if (!ModelState.IsValid)
+            
+            if (ModelState.IsValid)
             {
-
+                
                 var response = await _user.Login(userLogin.Email, Helpers.Encrypt(userLogin.Password));
                 if (!string.IsNullOrEmpty(response.Error))
                 {

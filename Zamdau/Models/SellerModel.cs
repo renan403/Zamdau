@@ -2,36 +2,32 @@
 
 namespace Zamdau.Models
 {
-    public class Seller
+    // Classe base para propriedades comuns
+    public class SellerBase
     {
         public string Name { get; set; }
         public string Description { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
         public string? ProfilePictureUrl { get; set; }
-        public bool IsSeller { get; }
-        public bool OwnerUsername { get; set; }
-        public List<ProductViewModel>? Products { get; set; }
     }
 
-    public class ProductViewModel
+    public class Seller : SellerBase
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public decimal Price { get; set; }
-        public string ImageUrl { get; set; }
+        public string? Uid { get; set; }
+        public bool IsSeller { get; }
+        public bool OwnerUsername { get; set; }
+        public List<Product>? Products { get; set; }
     }
-    public class RegisterSeller
+
+    public class RegisterSeller : SellerBase
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string? IdUser { get; set; }
         [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Please enter a valid email address.")]
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public string ProfilePictureUrl { get; set; }
+        public new string Email { get; set; }
     }
-    public class UpdateSeller : RegisterSeller
-    {
-        public IFormFile ProfilePicture { get; set; }
-    }
+
+    public class UpdateSeller : SellerBase { }
+
+
 }

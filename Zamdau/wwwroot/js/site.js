@@ -1,62 +1,48 @@
-﻿
-/*
-document.addEventListener('DOMContentLoaded', (event) => {
-    const themeToggleButton = document.getElementById('bd-theme');
-    const themeIcon = document.querySelector('.theme-icon-active');
-    const themeText = document.getElementById('bd-theme-text');
+﻿function showAlertPositive(message) {
+    const alertBox = document.getElementById('alert-box');
 
-    const setTheme = (theme) => {
-        if (theme === 'dark') {
-            document.body.classList.add('dark-mode');
-            themeIcon.innerHTML = '<use href="#sun"></use>';
-            themeText.textContent = 'Toggle theme (light)';
-        } else if (theme === 'light') {
-            document.body.classList.remove('dark-mode');
-            themeIcon.innerHTML = '<use href="#moon"></use>';
-            themeText.textContent = 'Toggle theme (dark)';
-        } else {
-            // Auto theme
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                document.body.classList.add('dark-mode');
-                themeIcon.innerHTML = '<use href="#sun"></use>';
-                themeText.textContent = 'Toggle theme (light)';
-            } else {
-                document.body.classList.remove('dark-mode');
-                themeIcon.innerHTML = '<use href="#moon"></use>';
-                themeText.textContent = 'Toggle theme (dark)';
-            }
-        }
-    };
+    // Atualiza a mensagem do alerta, se necessário
+    alertBox.textContent = message;
 
-    const getCurrentTheme = () => {
-        if (document.body.classList.contains('dark-mode')) {
-            return 'dark';
-        } else if (!document.body.classList.contains('dark-mode')) {
-            return 'light';
-        } else {
-            return 'auto';
-        }
-    };
+    // Adiciona a classe para exibir o alerta
+    alertBox.classList.add('show');
+    alertBox.classList.add('success');
 
-    themeToggleButton.addEventListener('click', () => {
-        const currentTheme = getCurrentTheme();
-        let newTheme;
+    // Remove o alerta após 3 segundos
+    setTimeout(() => {
+        alertBox.classList.remove('show');
 
-        if (currentTheme === 'dark') {
-            newTheme = 'light';
-        } else if (currentTheme === 'light') {
-            newTheme = 'auto';
-        } else {
-            newTheme = 'dark';
-        }
+    }, 3000);
+}
+function showAlertNegative(message) {
+    const alertBox = document.getElementById('alert-box');
 
-        setTheme(newTheme);
+    // Atualiza a mensagem do alerta, se necessário
+    alertBox.textContent = message;
+
+    // Adiciona a classe para exibir o alerta
+    alertBox.classList.add('show');
+    alertBox.classList.add('error');
+
+    // Remove o alerta após 3 segundos
+    setTimeout(() => {
+        alertBox.classList.remove('show');
+    }, 3000);
+}
+
+function showAlert(title, text) {
+    
+    Swal.fire({
+        icon: 'warning', //  'success', 'error', 'warning', 'info', 'question'
+        title: title,
+        text: text,
+        confirmButtonText: 'Ok',
+        background: 'black', // Gradiente do fundo
+        color: '#fff' // Cor do texto
+
     });
+}
 
-    // Set initial theme based on preference
-    setTheme('auto');
-});
- */
 
     const editButton = document.getElementById('editButton');
     const saveButton = document.getElementById('saveButton');

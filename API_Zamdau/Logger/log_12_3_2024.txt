@@ -1,0 +1,126 @@
+00:12:32 : Exception occured while authenticating.
+Url: https://www.googleapis.com/identitytoolkit/v3/relyingparty/deleteAccount?key={0}
+Request Data: {"idToken":"zUigFHu3kcfsrwfr3sfsuc1puGl1"}
+Response: {
+  "error": {
+    "code": 400,
+    "message": "INVALID_ID_TOKEN",
+    "errors": [
+      {
+        "message": "INVALID_ID_TOKEN",
+        "domain": "global",
+        "reason": "invalid"
+      }
+    ]
+  }
+}
+
+Reason: InvalidIDToken
+00:14:08 : Exception occured while authenticating.
+Url: https://www.googleapis.com/identitytoolkit/v3/relyingparty/deleteAccount?key={0}
+Request Data: {"idToken":"zUigFHu3kcfsrwfr3sfsuc1puGl1"}
+Response: {
+  "error": {
+    "code": 400,
+    "message": "INVALID_ID_TOKEN",
+    "errors": [
+      {
+        "message": "INVALID_ID_TOKEN",
+        "domain": "global",
+        "reason": "invalid"
+      }
+    ]
+  }
+}
+
+Reason: InvalidIDToken
+01:26:09 : Exception occured while authenticating.
+Url: https://www.googleapis.com/identitytoolkit/v3/relyingparty/deleteAccount?key={0}
+Request Data: {"idToken":"RhPtpaDrLTUcPrLnoohCbUgKefo2"}
+Response: {
+  "error": {
+    "code": 400,
+    "message": "INVALID_ID_TOKEN",
+    "errors": [
+      {
+        "message": "INVALID_ID_TOKEN",
+        "domain": "global",
+        "reason": "invalid"
+      }
+    ]
+  }
+}
+
+Reason: InvalidIDToken
+01:27:22 : Exception occured while authenticating.
+Url: https://www.googleapis.com/identitytoolkit/v3/relyingparty/deleteAccount?key={0}
+Request Data: {"idToken":"RhPtpaDrLTUcPrLnoohCbUgKefo2"}
+Response: {
+  "error": {
+    "code": 400,
+    "message": "INVALID_ID_TOKEN",
+    "errors": [
+      {
+        "message": "INVALID_ID_TOKEN",
+        "domain": "global",
+        "reason": "invalid"
+      }
+    ]
+  }
+}
+
+Reason: InvalidIDToken
+01:27:34 : Exception occured while authenticating.
+Url: https://www.googleapis.com/identitytoolkit/v3/relyingparty/deleteAccount?key={0}
+Request Data: {"idToken":"peDCKIzEEhnUVI1yF7K10HPgc3S46FDeugy/qoaaeq4="}
+Response: {
+  "error": {
+    "code": 400,
+    "message": "INVALID_ID_TOKEN",
+    "errors": [
+      {
+        "message": "INVALID_ID_TOKEN",
+        "domain": "global",
+        "reason": "invalid"
+      }
+    ]
+  }
+}
+
+Reason: InvalidIDToken
+01:27:37 : Exception occured while authenticating.
+Url: https://www.googleapis.com/identitytoolkit/v3/relyingparty/deleteAccount?key={0}
+Request Data: {"idToken":"peDCKIzEEhnUVI1yF7K10HPgc3S46FDeugy/qoaaeq4="}
+Response: {
+  "error": {
+    "code": 400,
+    "message": "INVALID_ID_TOKEN",
+    "errors": [
+      {
+        "message": "INVALID_ID_TOKEN",
+        "domain": "global",
+        "reason": "invalid"
+      }
+    ]
+  }
+}
+
+Reason: InvalidIDToken
+01:30:38 : Exception occured while authenticating.
+Url: https://www.googleapis.com/identitytoolkit/v3/relyingparty/deleteAccount?key={0}
+Request Data: {"idToken":"RhPtpaDrLTUcPrLnoohCbUgKefo2"}
+Response: {
+  "error": {
+    "code": 400,
+    "message": "INVALID_ID_TOKEN",
+    "errors": [
+      {
+        "message": "INVALID_ID_TOKEN",
+        "domain": "global",
+        "reason": "invalid"
+      }
+    ]
+  }
+}
+
+Reason: InvalidIDToken

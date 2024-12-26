@@ -25,6 +25,7 @@ body {
     margin-bottom: 60px;
     background-color: var(--bg-color);
     color: var(--text-color);
+    text-rendering: optimizeLegibility;
 }
 
 footer {
@@ -36,7 +37,24 @@ footer {
 a {
     text-decoration: none
 }
+canvas {
+    margin: 20px 0;
+}
+/* Rate product  */
+.star {
+    font-size: 2rem;
+    cursor: pointer;
+    color: lightgray;
+}
 
+    .star.selected {
+        color: gold;
+    }
+
+.starComment {
+    color: gold;
+    font-size: 1.2em; /* Ajuste o tamanho se necessário */
+}
 /* Sidebar */
 .sidebar {
     position: fixed;

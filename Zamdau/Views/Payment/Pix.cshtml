@@ -1,0 +1,26 @@
+﻿@model Pix
+@{
+    ViewData["Title"] = "PIX QR Code";
+}
+ 
+
+<div class=" d-flex justify-content-center align-items-center min-vh-90">
+   <div class="align-text-center">
+    <h1>Fake PIX QR Code</h1>
+    <canvas id="qr"></canvas>
+    <p>Scan the QR Code with your phone</p>
+    <p class="py-3">You will not be redirected, click the button below to check your orders.</p>
+    <a asp-action="Orders" asp-controller="User">View your Orders</a>
+    </div>
+    <script>
+        // Use o IP local em vez de localhost
+        const pixLink = "http://zamdau.azurewebsites.net/Home/Confirmation?OrderNumber=" + "@Model.OrderNumber";
+
+        // Gera o QR Code com a biblioteca QRious
+        const qr = new QRious({
+            element: document.getElementById('qr'),
+            value: pixLink, // Valor do QR Code (link para a página de confirmação)
+            size: 250 // Tamanho do QR Code
+        });
+    </script>
+</div>

@@ -32,7 +32,7 @@
         </nav>
     </div>
     <div class="card">
-        <div class="card-header bg-orange text-white">
+        <div class="card-header bg-orange text-black">
             <h3>Update Profile</h3>
         </div>
         <div class="card-body">
@@ -40,11 +40,10 @@
                 <div class="row">
                     <div class="col-md-4 text-center">
                         <div class="mt-1">
-                            <img id="preview" src="@(string.IsNullOrEmpty(Model.ProfilePictureUrl) ? Url.Content("~/images/Profile/Seller/imgNoPhoto.png") : Model.ProfilePictureUrl)" alt="Profile Preview" class="img-fluid rounded-circle m-3" style="max-width: 200px;">
-
+                            <img id="preview" src="@(string.IsNullOrEmpty(Model.ProfilePictureUrl) ? Url.Content("~/images/Profile/Seller/imgNoPhoto.png") : Model.ProfilePictureUrl)" alt="Profile Preview" class="img-fluid rounded-circle m-3 ProfileUpdateThumbnails" style="max-width: 200px;">
                         </div>
                         <div class=" mt-5 mb-3">
-                            <input type="file" class="form-control" name="ProfilePicture" accept="image/*" onchange="previewImage(event)">
+                            <input type="file" class="form-control" name="ProfilePictureUrl" accept="image/*" onchange="previewImage(event)">
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -99,15 +98,3 @@
         }
     }
 </script>
-<style>
-    #preview {
-        border: 2px dashed #ccc;
-        padding: 10px;
-        max-width: 200px;
-        min-width: 200px;
-        max-height: 200px;
-        min-height: 200px;
-        object-fit: cover;
-    }
-
-</style>

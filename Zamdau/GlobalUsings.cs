@@ -1,6 +1,9 @@
 ﻿global using System;
 global using System.Globalization;
 global using System.Security.Claims;
+using Firebase.Auth;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 /* padrao br
 CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
 CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("pt-BR");
@@ -10,3 +13,4 @@ string valorFormatado = valor.ToString("C", CultureInfo.DefaultThreadCurrentUICu
 Console.WriteLine(valorFormatado);  // Saída: R$ 1.234,56
 
  */
+

@@ -8,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUserService,UserService>();
 builder.Services.AddScoped<ISellerService,SellerService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
+
 builder.Services.AddSession(option =>
 {
     option.IdleTimeout =TimeSpan.FromHours(1);
