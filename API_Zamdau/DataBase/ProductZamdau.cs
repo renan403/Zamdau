@@ -1,11 +1,6 @@
 ﻿using API_Zamdau.User;
 using Firebase.Database.Query;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace API_Zamdau.DataBase
 {

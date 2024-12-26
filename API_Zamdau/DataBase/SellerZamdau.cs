@@ -1,13 +1,7 @@
 ﻿using API_Zamdau.User;
-using Firebase.Auth;
-using Firebase.Database;
 using Firebase.Database.Query;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
-using System.Collections.Immutable;
-using System.Globalization;
-using System.Linq;
-using System.Xml.Linq;
 
 namespace API_Zamdau.DataBase
 {

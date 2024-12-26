@@ -2,16 +2,15 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-
 using Zamdau.Interfaces;
 using Zamdau.Models;
 using Zamdau.Services;
 
 namespace Zamdau.Controllers
 {
-    public class BuyerController(IUserService user) : Controller
+    public class BuyerController(IUserService iUser) : Controller
     {
-        private IUserService _user = user;
+        private readonly IUserService _user = iUser;
 
         [HttpGet]
         public IActionResult Login(string ReturnUrl)
@@ -127,7 +126,7 @@ namespace Zamdau.Controllers
 
             if (captchaVerification.Success)
             {
-                await user.ResetPasswordAccess(form["Email"]);
+                await _user.ResetPasswordAccess(form["Email"]);
                 return RedirectToAction("PasswordSent");
             }
             else // reCAPTCHA falhou

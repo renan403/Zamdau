@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Zamdau.Interfaces;
 using Zamdau.Models;
-using Zamdau.Services;
 
 
 namespace Zamdau.Controllers
@@ -16,7 +15,6 @@ namespace Zamdau.Controllers
 
         public async Task<IActionResult> SellerProfile(string? name)
         {
-            
             Seller seller = name is not null ? await _seller.GetSellerByNameAsync(User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value, name) : await _seller.GetSellerAsync(User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value);
 
             var session = await _user.GetEmailID(User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value);
@@ -42,10 +40,7 @@ namespace Zamdau.Controllers
         {
             var seller = await _seller.GetSellerAsync(User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value);
         
-           
             return View(seller);
-
-
         }
         [HttpPost]
         public async Task<IActionResult> UpdateProfile(UpdateSeller model, IFormFile? ProfilePictureUrl)

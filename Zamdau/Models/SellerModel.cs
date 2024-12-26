@@ -2,7 +2,6 @@
 
 namespace Zamdau.Models
 {
-    // Classe base para propriedades comuns
     public class SellerBase
     {
         public string Name { get; set; }

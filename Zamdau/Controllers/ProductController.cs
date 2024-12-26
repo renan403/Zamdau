@@ -1,33 +1,30 @@
-﻿using API_Zamdau.User;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
+﻿using Microsoft.AspNetCore.Mvc;
 using Zamdau.Interfaces;
 using Zamdau.Models;
 
 namespace Zamdau.Controllers
 {
-    public class ProductController(IProductService productService, ISellerService sellerService,  IUserService user) : Controller
+    public class ProductController(IProductService productService, ISellerService sellerService, IUserService user) : Controller
     {
-        
+
         private readonly IProductService _productService = productService;
         private readonly ISellerService _sellerService = sellerService;
-        
         private readonly IUserService _user = user;
 
-        
+
 
         public async Task<IActionResult> DeleteProductSeller(string productId)
         {
             await _sellerService.DeleteProductSellerAsync(User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value, productId);
-            return RedirectToAction("SellerProfile","Seller");
+            return RedirectToAction("SellerProfile", "Seller");
         }
-       
-        
+
+
         [HttpGet]
         public async Task<IActionResult> ViewProduct(string productId)
         {
             var prod = await _productService.GetProductAsync(productId);
-            //var prod = LoadProducts().Where(p => p.Id == id).FirstOrDefault();
+
             return View(prod);
         }
 
@@ -36,13 +33,7 @@ namespace Zamdau.Controllers
         {
             var products = await _productService.GetAllProductAsync();
 
-
-
-           products = Filtrar(products, brand, minPrice, maxPrice, searchTerm);
-
-
-
-
+            products = Filtrar(products, brand, minPrice, maxPrice, searchTerm);
 
             int pageSize = 9;
             ViewBag.Brands = products.DistinctBy(p => p.Brand).Select(p => p.Brand);
@@ -54,7 +45,7 @@ namespace Zamdau.Controllers
         [HttpGet]
         public List<Product> Filtrar(List<Product> products, string brand, double minPrice, double maxPrice, string productName)
         {
-          
+
 
 
             // Filtra por nome
@@ -63,7 +54,7 @@ namespace Zamdau.Controllers
                 products = products.Where(p => p.Name.Contains(productName, StringComparison.OrdinalIgnoreCase)).ToList();
                 ViewBag.FilterProdName = productName;
             }
-            
+
             // Filtra por marca
             if (!string.IsNullOrEmpty(brand))
             {
@@ -87,13 +78,6 @@ namespace Zamdau.Controllers
 
             // Paginação
             int pageSize = 9;
-
-            // Paginação
-
-           // var paginatedProducts = products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
-            //ViewBag.Brands = products.DistinctBy(p => p.Brand).Select(p => p.Brand);
-            //ViewBag.TotalPages = (int)Math.Ceiling((double)products.Count / pageSize);
-            //ViewBag.CurrentPage = page;
 
             return products;
         }

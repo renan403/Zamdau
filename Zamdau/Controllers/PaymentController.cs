@@ -1,7 +1,5 @@
 ﻿using API_Zamdau.Helpers;
-using Firebase.Auth;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Zamdau.Interfaces;
 using Zamdau.Models;
@@ -69,8 +67,7 @@ namespace Zamdau.Controllers
         public async Task<IActionResult> RemoveFromCheckout(string itemId)
         {
             await _payment.RemoveItemCheckoutAsync(User.Claims.FirstOrDefault(u => u.Type == "UserId")?.Value, itemId);
-            // Lógica para remover o item do banco
-            // Atualizar o estado do checkout e redirecionar
+           
             return RedirectToAction("Checkout");
         }
         [HttpGet]

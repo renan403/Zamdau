@@ -1,14 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using Zamdau.Models;
 using System.Diagnostics;
 using Zamdau.Interfaces;
-using System.Reflection;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
-using Zamdau.Services;
-using System.Security.Cryptography.X509Certificates;
+using Zamdau.Models;
 
 namespace Zamdau.Controllers
 {
@@ -22,15 +16,12 @@ namespace Zamdau.Controllers
         [HttpPost]
         public async Task<ActionResult> AddComment(Comment comment)
         {
-
             comment.Author = (await _user.GetUser(User.Claims.FirstOrDefault(u => u.Type == "UserId")?.Value)).Name ?? $"User{new Random().Next(101)}";
             comment.DatePosted = DateTime.UtcNow;
 
             await _user.AddComment(comment);
 
-
             return RedirectToAction("Details", "User", new { id = comment.OrderNumber });
-
         }
 
         [HttpGet]
@@ -39,7 +30,6 @@ namespace Zamdau.Controllers
             var order = await _payment.UpdateOrderStatusByIdAsync(id, PaymentStatus.Cancelled);
 
             return RedirectToAction("Details", "User", new { id });
-
         }
         [HttpGet]
         public async Task<IActionResult> UpdateOrder(string id)
@@ -57,12 +47,9 @@ namespace Zamdau.Controllers
                 case PaymentStatus.Pending:
                     await _payment.UpdateOrderStatusByIdAsync(id, PaymentStatus.Processing);
                     break;
-
             }
 
-
             return RedirectToAction("Details", "User", new { id });
-
         }
         [HttpGet]
         public async Task<IActionResult> Details(string id)
@@ -70,13 +57,11 @@ namespace Zamdau.Controllers
             var order = await _payment.FindOrderByIdAsync(id);
 
             return View(order);
-
         }
         [HttpGet]
         public async Task<IActionResult> Orders()
         {
             var orders = await _payment.GetOrdersAsync(User.Claims.FirstOrDefault(u => u.Type == "UserId")?.Value);
-
 
             return View(orders);
         }
@@ -105,16 +90,13 @@ namespace Zamdau.Controllers
         [HttpGet]
         public async Task<IActionResult> Cart()
         {
-
             var cart = await _user.GetCartUser(User.Claims.FirstOrDefault(u => u.Type == "UserId")?.Value);
-
 
             return View(cart);
         }
         [HttpPost]
         public async Task<IActionResult> Cart(CheckoutDetails details)
         {
-
             details.CartItems.RemoveAll(s => s.IsSelected == null);
             if (ModelState.IsValid)
             {
@@ -127,7 +109,6 @@ namespace Zamdau.Controllers
 
                 return RedirectToAction("Checkout", "Payment");
             }
-
             return RedirectToAction("Cart");
         }
         [HttpPost, HttpGet]
@@ -141,16 +122,11 @@ namespace Zamdau.Controllers
                 await _user.AddToCartAsync(User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value, ProductId, Quantity.ToString());
                 return RedirectToAction("Cart", "User");
             }
-
-
-
-
             return RedirectToAction();
         }
         [HttpGet]
         public async Task<IActionResult> Address()
         {
-
             var userId = User.Claims.FirstOrDefault(c => c.Type == "UserId")?.Value;
             var address = await _user.GetAddress(userId);
             return View(address);

@@ -1,7 +1,4 @@
-﻿
-using System.Runtime.Serialization;
-
-namespace API_Zamdau.User
+﻿namespace API_Zamdau.User
 {
     public class AP_Auth(string? erro = null, bool authenticated = false)
     {

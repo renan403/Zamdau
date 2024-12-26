@@ -1,7 +1,4 @@
-﻿using API_Zamdau.DataBase;
-using API_Zamdau.User;
-using System.ComponentModel.DataAnnotations;
-using Zamdau.Interfaces;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Zamdau.Models
 {

@@ -1,5 +1,4 @@
-﻿using API_Zamdau.User;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Zamdau.Models
 {

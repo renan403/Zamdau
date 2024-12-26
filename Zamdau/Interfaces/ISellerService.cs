@@ -1,5 +1,4 @@
-﻿using API_Zamdau.DataBase;
-using Zamdau.Models;
+﻿using Zamdau.Models;
 
 namespace Zamdau.Interfaces
 {

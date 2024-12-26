@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace API_Zamdau.User
+﻿namespace API_Zamdau.User
 {
     public class AP_User
     {
