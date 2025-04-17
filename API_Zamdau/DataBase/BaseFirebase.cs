@@ -10,7 +10,7 @@ namespace API_Zamdau.DataBase
     {
         protected readonly FirebaseAuthProvider _authProvider;
         protected FirebaseClient _client;
-        protected const string apiKey = "AIzaSyC6L9Knos384ZHZPfVOsaTU5wFldlB1JMs";
+        protected const string apiKey = "******";
 
         public enum Path
         {
