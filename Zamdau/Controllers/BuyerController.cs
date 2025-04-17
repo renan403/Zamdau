@@ -141,7 +141,7 @@ namespace Zamdau.Controllers
         {
             var recaptchaResponse = form["g-recaptcha-response"];
             var client = new HttpClient();
-            var result = await client.GetStringAsync($"https://www.google.com/recaptcha/api/siteverify?secret={"6LedYBoqAAAAAPfQH1WObVJwBsTd1KWq_lWiH1jI"}&response={recaptchaResponse}");
+            var result = await client.GetStringAsync($"https://www.google.com/recaptcha/api/siteverify?secret={"****"}&response={recaptchaResponse}");
 
             return JsonConvert.DeserializeObject<CaptchaResponse>(result);
 
