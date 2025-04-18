@@ -8,7 +8,7 @@ namespace Zamdau.Controllers
     public class TestesController : Controller
     {
 
-        private const string RecaptchaSecretKey = "6LefNBkqAAAAAPsqXAq45IPVH0Sb-b6g4TErxA-O";
+        private const string RecaptchaSecretKey = "****";
 
         [HttpPost]
         public async Task<IActionResult> ProcessarFormulario(string email, string mensagem, string gRecaptchaResponse)
