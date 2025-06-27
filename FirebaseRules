@@ -1,0 +1,41 @@
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",  // Usuários podem ler seus próprios dados
+        ".write": "$uid === auth.uid"  // Usuários podem escrever seus próprios dados
+      }
+    },
+    "sellers": {
+      "$companyName": {
+        ".read": true,  // Todos podem ler
+        ".write": "!data.exists() || data.child('Uid').val() === auth.uid" // Permite criar ou editar se Uid corresponder
+      }
+    },
+    "products": {
+      ".read": true,
+      "$productId": {
+        ".read": true,  // Todos podem ler
+        ".write": "!data.exists() || data.child('Uid').val() === auth.uid" // Permite criar ou editar se Uid corresponder
+      }
+    },
+      "orders": {
+        ".read": "auth != null ",
+  "$orderId": {
+    ".read": "auth != null && root.child('admins').child(auth.uid).exists()",  // Todos os usuários autenticados podem ler
+    ".write": "!data.exists() || (root.child('admins').child(auth.uid).child('role').val() === 'adm' && root.child('admins').child(auth.uid).child('isActive').val() === true) || root.child('admins').child(auth.uid).child('role').val() === 'owner'"
+    // Permite criar (se o pedido ainda não existe) OU editar (apenas administradores ativos)
+  }
+    },
+    "orderHistory": {
+      ".read": "auth != null",  // Todos os usuários autenticados podem ler o histórico
+      ".write": "auth != null && root.child('admins').child(auth.uid).child('role').val() === 'owner'" // Apenas o proprietário do banco pode escrever
+    },
+    "admins": {
+      "$adminId": {
+        ".read": "auth != null && root.child('admins').child(auth.uid).exists()", // Apenas administradores podem ler informações de outros admins
+        ".write":"auth != null && root.child('admins').child(auth.uid).child('role').val() === 'owner'"// Apenas o proprietário pode alterar admins
+      }
+    }
+  }
+}
