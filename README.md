@@ -17,4 +17,4 @@ Painel do vendedor para gerenciamento de produtos
 Acompanhamento de envio para o cliente
 
 
-Link : https://zamdau.azurewebsites.net/
+Link : https://zamdau.azurewebsites.net/  --- Banco Firebase não mais em uso devido a necessidade de pagamento
